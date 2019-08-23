@@ -4,91 +4,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script></script>
 <style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+.onoffswitchblue {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitchblue-checkbox {
+    display: none;
+}
+.onoffswitchblue-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitchblue-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitchblue-inner:before, .onoffswitchblue-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitchblue-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitchblue-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #34A7C1;
+    text-align: right;
+}
+.onoffswitchblue-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitchblue-checkbox:checked + .onoffswitchblue-label .onoffswitchblue-inner {
+    margin-left: 0;
+}
+.onoffswitchblue-checkbox:checked + .onoffswitchblue-label .onoffswitchblue-switch {
+    right: 0px; 
+}
+.onoffswitchbred {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitchbred-checkbox {
+    display: none;
+}
+.onoffswitchbred-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitchbred-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitchbred-inner:before, .onoffswitchbred-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitchbred-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #FA2020; color: #FFFFFF;
+}
+.onoffswitchbred-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #FA2020;
+    text-align: right;
+}
+.onoffswitchbred-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitchbred-checkbox:checked + .onoffswitchbred-label .onoffswitchbred-inner {
+    margin-left: 0;
+}
+.onoffswitchbred-checkbox:checked + .onoffswitchbred-label .onoffswitchbred-switch {
+    right: 0px; 
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.onoffswitchgreen {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.onoffswitchgreen-checkbox {
+    display: none;
 }
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+.onoffswitchgreen-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
 }
-
-input:checked + .slider {
-  background-color: #2196F3;
+.onoffswitchgreen-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
 }
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+.onoffswitchgreen-inner:before, .onoffswitchgreen-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
 }
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+.onoffswitchgreen-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #FA2020; color: #FFFFFF;
 }
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
+.onoffswitchgreen-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #FA2020;
+    text-align: right;
 }
-
-.slider.round:before {
-  border-radius: 50%;
+.onoffswitchgreen-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitchgreen-checkbox:checked + .onoffswitchgreen-label .onoffswitchgreen-inner {
+    margin-left: 0;
+}
+.onoffswitchgreen-checkbox:checked + .onoffswitchgreen-label .onoffswitchgreen-switch {
+    right: 0px; 
+}
+.onoffswitchyellow {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitchyellow-checkbox {
+    display: none;
+}
+.onoffswitchyellow-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitchyellow-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitchyellow-inner:before, .onoffswitchyellow-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitchyellow-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #FA2020; color: #FFFFFF;
+}
+.onoffswitchyellow-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #FA2020;
+    text-align: right;
+}
+.onoffswitchyellow-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitchyellow-checkbox:checked + .onoffswitchyellow-label .onoffswitchyellow-inner {
+    margin-left: 0;
+}
+.onoffswitchyellow-checkbox:checked + .onoffswitchyellow-label .onoffswitchyellow-switch {
+    right: 0px; 
 }
 </style>
 </head>
 <body>
 
-<h2>Toggle Switch</h2>
+<div class="onoffswitchblue">
+    <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
+    <label class="onoffswitchblue-label" for="myonoffswitchblue">
+        <span class="onoffswitchblue-inner"></span>
+        <span class="onoffswitchblue-switch"></span>
+    </label>
+</div>
 
-<label class="switch">
-  <input type="checkbox">
-  <span class="slider"></span>
-</label>
+<div class="onoffswitchbred">
+  <input type="checkbox" name="onoffswitchbred" class="onoffswitchbred-checkbox" id="myonoffswitchbred" checked>
+  <label class="onoffswitchbred-label" for="myonoffswitchbred">
+      <span class="onoffswitchbred-inner"></span>
+      <span class="onoffswitchbred-switch"></span>
+  </label>
+  <div class="onoffswitchgreen">
+    <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen" checked>
+    <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
+        <span class="onoffswitchgreen-inner"></span>
+        <span class="onoffswitchgreen-switch"></span>
+    </label>
+</div>
 
-<label class="switch">
-  <input type="checkbox" checked>
-  <span class="slider"></span>
-</label><br><br>
-
-<label class="switch">
-  <input type="checkbox">
-  <span class="slider round"></span>
-</label>
-
-<label class="switch">
-  <input type="checkbox" checked>
-  <span class="slider round"></span>
-</label>
+<div class="onoffswitchyellow">
+    <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow" checked>
+    <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+        <span class="onoffswitchyellow-inner"></span>
+        <span class="onoffswitchyellow-switch"></span>
+    </label>
+</div>
 
 </body>
 </html> 
-
+                                             
