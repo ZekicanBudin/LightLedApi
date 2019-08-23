@@ -7,21 +7,21 @@ mongoose.connect('mongodb+srv://zekican:zekican@ledapidb-udcfo.mongodb.net/test?
 
 let ledSchema = new mongoose.Schema({
   red : {
-    type: boolean,
+    type: Boolean,
     required: true
   },
   green : {
-    type: boolean,
+    type: Boolean,
     required: true
   },
   yellow : {
-    type: boolean,
+    type: Boolean,
     required: true
   },
   blue : {
-    type: boolean,
+    type: Boolean,
     required: true
-  }
+  } 
 })
 
 module.exports = mongoose.model('Led', ledSchema)

@@ -13,14 +13,17 @@ router.get('/led', async (req,res) => {
     }
 })
 //Getting one
-router.get('/:id', getLed, (req,res) => {
+router.get('/led/:id', getLed, (req,res) => {
     res.json(res.led)
 })
 
 //Creating
-router.post('/create', async (req,res) => {
+router.post('/led/create', async (req,res) => {
     const led = new Led({
-        code : req.body.code
+        red : req.body.red,
+        green : req.body.green,
+        blue : req.body.blue,
+        yellow : req.body.yellow
     })
     try {
         const newLed = await led.save()
@@ -31,9 +34,39 @@ router.post('/create', async (req,res) => {
 })
 
 //Updating
-router.patch('/:id',getLed, async (req,res) => {
-    if (req.body.code != null){
-        res.led.code = req.body.code
+router.patch('/led',getLed, async (req,res) => {
+    if (req.body.red != null){
+        res.led.red = req.body.red
+    }
+    if (req.body.green != null){
+        res.led.green = req.body.green
+    }
+    if (req.body.blue != null){
+        res.led.blue = req.body.blue
+    }
+    if (req.body.yellow != null){
+        res.led.yellow = req.body.yellow
+    }
+    try{
+        const updatedLed = await res.led.save()
+        res.json(updatedLed)
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+})
+//Update by parameter
+router.patch('/led/:id',getLedByParam, async (req,res) => {
+    if (req.body.red != null){
+        res.led.red = req.body.red
+    }
+    if (req.body.green != null){
+        res.led.green = req.body.green
+    }
+    if (req.body.blue != null){
+        res.led.blue = req.body.blue
+    }
+    if (req.body.yellow != null){
+        res.led.yellow = req.body.yellow
     }
     try{
         const updatedLed = await res.led.save()
@@ -44,22 +77,41 @@ router.patch('/:id',getLed, async (req,res) => {
 })
 
 //Deleting
-router.delete('/:id',getLed, async (req,res) => {
+router.delete('/delete/:id',getLedByParam, async (req,res) => {
+    if(id == "5d5fd45895f7a90b088be283"){
+        res.json({message: 'Main led cannot be deleted'})
+    }
+    else{
     try{
         await res.led.remove()
         res.json({message: 'Deleted!'})
     }catch(err){
         res.status(500).json({message: err.message})
     }
-
+    }
 })
 
 async function getLed(req,res,next) {
     let led
     try{
+        led = await Led.findById("5d5fd45895f7a90b088be283")
+        if(led == null){
+            return res.status(404).json({message: 'Cannot find'})
+        }
+    }catch(err){
+        res.status(500).json({message: err.message })
+    }
+
+    res.led = led
+    next()
+}
+
+async function getLedByParam(req,res,next) {
+    let led
+    try{
         led = await Led.findById(req.params.id)
         if(led == null){
-            return res.status(404).json({message: 'Cannot find subscriber'})
+            return res.status(404).json({message: 'Cannot find'})
         }
     }catch(err){
         res.status(500).json({message: err.message })
