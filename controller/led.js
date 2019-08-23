@@ -12,6 +12,7 @@ router.get('/led', async (req,res) => {
         res.status(500).json({message: err.message})
     }
 })
+
 //Getting one
 router.get('/led/:id', getLed, (req,res) => {
     res.json(res.led)
