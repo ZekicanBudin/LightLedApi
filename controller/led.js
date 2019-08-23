@@ -34,7 +34,7 @@ router.post('/led/create', async (req,res) => {
 })
 
 //Updating
-router.patch('/led',getLed, async (req,res) => {
+router.patch('/led/update',getLed, async (req,res) => {
     if (req.body.red != null){
         res.led.red = req.body.red
     }
@@ -47,6 +47,19 @@ router.patch('/led',getLed, async (req,res) => {
     if (req.body.yellow != null){
         res.led.yellow = req.body.yellow
     }
+    try{
+        const updatedLed = await res.led.save()
+        res.json(updatedLed)
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+})
+//Update with passed values
+router.patch('/led/update/:r/:g/:b/:y',getLed, async (req,res) => {
+        res.led.red = req.params.r
+        res.led.green = req.params.g
+        res.led.blue = req.params.b
+        res.led.yellow = req.params.y
     try{
         const updatedLed = await res.led.save()
         res.json(updatedLed)
