@@ -9,7 +9,7 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "lightledapi.herokuapp.com/led",
+                url: "https://lightledapi.herokuapp.com/led",
                 cors:true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
@@ -28,7 +28,7 @@
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
                         //url :veri istenilen php dosyasının adresi
-                        url: 'lightledapi.herokuapp.com/led/update',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
                         //data :verileri göndermek için,
                         cors: true,
                         contentType: 'application/json',
