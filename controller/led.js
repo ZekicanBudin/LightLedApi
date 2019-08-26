@@ -35,7 +35,7 @@ router.post('/led/create', async (req,res) => {
 })
 
 //Updating
-router.patch('/led/update',getLed, async (req,res) => {
+router.post('/led/update',getLed, async (req,res) => {
     if (req.body.red != null){
         res.led.red = req.body.red
     }
