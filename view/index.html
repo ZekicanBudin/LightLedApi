@@ -10,19 +10,19 @@
                 type: "GET",
                 dataType: "json",
                 url: "https://lightledapi.herokuapp.com/led",
-                cors:true,
+                cors: true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
                     $(".onoffswitchblue-checkbox").attr('checked', data[0].blue);
                     $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
-                    
+
                 }
             });
         });
         $(document).ready(function () {
+            //blue
             $('.onoffswitchblue-checkbox').click(function () {
-
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
@@ -31,21 +31,89 @@
                         url: 'https://lightledapi.herokuapp.com/led/update',
                         //data :verileri göndermek için,
                         //contentType: 'application/json',
-                        dataType : "json",
-                        cors: true,
-                        data: { 
-                            blue : $('.onoffswitchblue-checkbox').is(':checked') 
+                        dataType: "json",
+                        // cors: true,
+                        data: {
+                            "blue": $('.onoffswitchblue-checkbox').is(':checked')
                         },
                         //success :İstenilen veri geldi ise
                         success: function (data) {
                             console.log(data);
-                            alert('veri gönderildi..');
+                            console.log('veri gönderildi..');
                         },
                     })
-
             });
+            //red
+            $('.onoffswitchbred-checkbox').click(function () {
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        //data :verileri göndermek için,
+                        //contentType: 'application/json',
+                        dataType: "json",
+                        // cors: true,
+                        data: {
+                            "red": $('.onoffswitchbred-checkbox').is(':checked')
+                        },
+                        //success :İstenilen veri geldi ise
+                        success: function (data) {
+                            console.log(data);
+                            console.log('veri gönderildi..');
+                        },
+                    })
+            });
+
+            //green
+            $('.onoffswitchgreen-checkbox').click(function () {
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        //data :verileri göndermek için,
+                        //contentType: 'application/json',
+                        dataType: "json",
+                        // cors: true,
+                        data: {
+                            "green": $('.onoffswitchgreen-checkbox').is(':checked')
+                        },
+                        //success :İstenilen veri geldi ise
+                        success: function (data) {
+                            console.log(data);
+                            console.log('veri gönderildi..');
+                        },
+                    })
+            });
+            //yellow
+
+            $('.onoffswitchyellow-checkbox').click(function () {
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        //data :verileri göndermek için,
+                        //contentType: 'application/json',
+                        dataType: "json",
+                        // cors: true,
+                        data: {
+                            "yellow": $('.onoffswitchyellow-checkbox').is(':checked')
+                        },
+                        //success :İstenilen veri geldi ise
+                        success: function (data) {
+                            console.log(data);
+                            console.log('veri gönderildi..');
+                        },
+                    })
+            });
+
         });
-        
+
     </script>
 
     <style>
