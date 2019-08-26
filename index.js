@@ -17,6 +17,7 @@ var allowCrossDomain = function(req, res, next) {
     }
 };
 app.use(allowCrossDomain)
+var jsonParser = bodyParser.json()
 app.use(bodyParser.json())  
 
 app.use((req,res, next) => {
@@ -36,7 +37,10 @@ app.use((err,req,res,next) => {
     console.error(err.stack)
     res.sendFile(path.join(__dirname, './view/500.html'))
 })
-
+app.post('/led/update', jsonParser, function (req, res) {
+    console.log(req.body);
+    console.log('Send button clicked');
+  })
 
 const PORT = process.env.PORT || 2019
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`))
