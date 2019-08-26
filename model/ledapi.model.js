@@ -6,6 +6,14 @@ mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb+srv://zekican:zekican@ledapidb-udcfo.mongodb.net/test?retryWrites=true&w=majority')
 
 let ledSchema = new mongoose.Schema({
+
+/*
+
+  data : {
+    color : string
+    value : boolen
+  }
+  */
   red : {
     type: Boolean,
     required: true

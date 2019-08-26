@@ -4,7 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    <script type="text/javascript">
+        var red,blue,green,yellow;
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
@@ -16,13 +17,22 @@
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
                     $(".onoffswitchblue-checkbox").attr('checked', data[0].blue);
                     $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
+<<<<<<< HEAD
 
+=======
+                    red = data[0].red;
+                    blue = data[0].blue;
+                    green = data[0].green;
+                    yellow = data[0].yellow;
+>>>>>>> 5d8bd5b7a3c5db53aad63b4e831d45b864dd716e
                 }
             });
         });
+        var myData = {}
         $(document).ready(function () {
             //blue
             $('.onoffswitchblue-checkbox').click(function () {
+<<<<<<< HEAD
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
@@ -68,13 +78,28 @@
 
             //green
             $('.onoffswitchgreen-checkbox').click(function () {
+=======
+                if(blue){
+                    myData.blue = false;
+                }
+                else{
+                    myData.blue = true;
+                }
+>>>>>>> 5d8bd5b7a3c5db53aad63b4e831d45b864dd716e
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
                         //url :veri istenilen php dosyasının adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
+                        success: function(data) {
+                            console.log('Success')
+                            console.log(JSON.stringify(data))
+                        }
                         //data :verileri göndermek için,
+<<<<<<< HEAD
                         //contentType: 'application/json',
                         dataType: "json",
                         // cors: true,
@@ -110,10 +135,88 @@
                             console.log('veri gönderildi..');
                         },
                     })
+=======
+                        //contentType: 'json',
+                        //dataType : "json",
+                        //cors: true,
+                    })
+            });
+        });
+        $(document).ready(function () {
+            $('.onoffswitchbred-checkbox').click(function () {
+                if(red){
+                    myData.red = false;
+                }
+                else{
+                    myData.red = true;
+                }
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        success: function(data) {
+                            console.log('Success')
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+            });
+        });
+        $(document).ready(function () {
+            $('.onoffswitchgreen-checkbox').click(function () {
+                if(green){
+                    myData.green = false;
+                }
+                else{
+                    myData.green = true;
+                }
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        success: function(data) {
+                            console.log('Success')
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+            });
+        });
+        $(document).ready(function () {
+            $('.onoffswitchyellow-checkbox').click(function () {
+                if(yellow){
+                    myData.yellow = false;
+                }
+                else{
+                    myData.yellow = true;
+                }
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen php dosyasının adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        success: function(data) {
+                            console.log('Success')
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+>>>>>>> 5d8bd5b7a3c5db53aad63b4e831d45b864dd716e
             });
 
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5d8bd5b7a3c5db53aad63b4e831d45b864dd716e
     </script>
 
     <style>
@@ -438,14 +541,6 @@
 
 <body>
 
-    <div class="onoffswitchblue">
-        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
-        <label class="onoffswitchblue-label" for="myonoffswitchblue">
-            <span class="onoffswitchblue-inner"></span>
-            <span class="onoffswitchblue-switch"></span>
-        </label>
-    </div>
-
     <div class="onoffswitchbred">
         <input type="checkbox" name="onoffswitchbred" class="onoffswitchbred-checkbox" id="myonoffswitchbred" checked>
         <label class="onoffswitchbred-label" for="myonoffswitchbred">
@@ -453,6 +548,15 @@
             <span class="onoffswitchbred-switch"></span>
         </label>
     </div>
+    
+    <div class="onoffswitchyellow">
+            <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
+                checked>
+            <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+                <span class="onoffswitchyellow-inner"></span>
+                <span class="onoffswitchyellow-switch"></span>
+            </label>
+        </div>
     <div class="onoffswitchgreen">
         <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
             checked>
@@ -462,14 +566,13 @@
         </label>
     </div>
 
-    <div class="onoffswitchyellow">
-        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
-            checked>
-        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
-            <span class="onoffswitchyellow-inner"></span>
-            <span class="onoffswitchyellow-switch"></span>
-        </label>
-    </div>
+    <div class="onoffswitchblue">
+            <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
+            <label class="onoffswitchblue-label" for="myonoffswitchblue">
+                <span class="onoffswitchblue-inner"></span>
+                <span class="onoffswitchblue-switch"></span>
+            </label>
+        </div>
 
 </body>
 
