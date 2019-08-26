@@ -56,7 +56,7 @@ router.post('/led/update',getLed, async (req,res) => {
     }
 })
 //Update with passed values
-router.patch('/led/update/:r/:g/:b/:y',getLed, async (req,res) => {
+router.post('/led/update/:r/:g/:b/:y',getLed, async (req,res) => {
         res.led.red = req.params.r
         res.led.green = req.params.g
         res.led.blue = req.params.b
@@ -69,7 +69,7 @@ router.patch('/led/update/:r/:g/:b/:y',getLed, async (req,res) => {
     }
 })
 //Update by parameter
-router.patch('/led/:id',getLedByParam, async (req,res) => {
+router.post('/led/:id',getLedByParam, async (req,res) => {
     if (req.body.red != null){
         res.led.red = req.body.red
     }
