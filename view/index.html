@@ -10,15 +10,16 @@
                 type: "GET",
                 dataType: "json",
                 url: "http://lightledapi.herokuapp.com/led",
+                cors:true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
                     $(".onoffswitchblue-checkbox").attr('checked', data[0].blue);
                     $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
+                    
                 }
             });
         });
-
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
 
@@ -48,6 +49,7 @@
 
             });
         });
+        
     </script>
 
     <style>
