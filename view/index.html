@@ -25,14 +25,13 @@
             });
         });
         var myData = {}
+        // myData.blue = blue;
+        // myData.red = red;
+        // myData.yellow = yellow;
+        // myData.green = green;
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
-                if(blue){
-                    myData.blue = false;
-                }
-                else{
-                    myData.blue = true;
-                }
+                myData.blue = !myData.blue
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
@@ -54,12 +53,7 @@
         });
         $(document).ready(function () {
             $('.onoffswitchbred-checkbox').click(function () {
-                if(red){
-                    myData.red = false;
-                }
-                else{
-                    myData.red = true;
-                }
+                myData.red = !myData.red
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
@@ -77,12 +71,7 @@
         });
         $(document).ready(function () {
             $('.onoffswitchgreen-checkbox').click(function () {
-                if(green){
-                    myData.green = false;
-                }
-                else{
-                    myData.green = true;
-                }
+                myData.green = !myData.green
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
@@ -100,12 +89,13 @@
         });
         $(document).ready(function () {
             $('.onoffswitchyellow-checkbox').click(function () {
-                if(yellow){
-                    myData.yellow = false;
-                }
-                else{
-                    myData.yellow = true;
-                }
+                // if(yellow){
+                //     myData.yellow = false;
+                // }
+                // else{
+                //     myData.yellow = true;
+                // }
+                myData.yellow = !myData.yellow
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
