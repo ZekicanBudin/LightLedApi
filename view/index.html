@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
-        var red,blue,green,yellow;
         var request = new XMLHttpRequest();
-        request.open('GET','https://lightledapi.herokuapp.com/led',false);
+        request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
         request.send(null);
         var myVar = request.responseText;
         $(document).ready(function () {
@@ -15,20 +14,20 @@
                 type: "GET",
                 dataType: "json",
                 url: "https://lightledapi.herokuapp.com/led",
-                cors:true,
+                cors: true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
                     $(".onoffswitchblue-checkbox").attr('checked', data[0].blue);
-                        $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
+                    $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
                 }
             });
         });
         var myData = {}
-        myData.blue = JSON.parse(request.responseText)[0].blue;
-        myData.red = JSON.parse(request.responseText)[0].red;
-        myData.yellow = JSON.parse(request.responseText)[0].yellow;
-        myData.green = JSON.parse(request.responseText)[0].green;
+        myData.blue = JSON.parse(myVar)[0].blue;
+        myData.red = JSON.parse(myVar)[0].red;
+        myData.yellow = JSON.parse(myVar)[0].yellow;
+        myData.green = JSON.parse(myVar)[0].green;
         console.log(myData)
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
@@ -41,7 +40,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -63,7 +62,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -81,7 +80,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -105,7 +104,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -444,31 +443,31 @@
         </label>
     </div>
     <div class="onoffswitchgreen">
-            <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
-                checked>
-            <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
-                <span class="onoffswitchgreen-inner"></span>
-                <span class="onoffswitchgreen-switch"></span>
-            </label>
-        </div>
+        <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
+            checked>
+        <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
+            <span class="onoffswitchgreen-inner"></span>
+            <span class="onoffswitchgreen-switch"></span>
+        </label>
+    </div>
 
     <div class="onoffswitchyellow">
-            <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
-                checked>
-            <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
-                <span class="onoffswitchyellow-inner"></span>
-                <span class="onoffswitchyellow-switch"></span>
-            </label>
-        </div>
-    
+        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
+            checked>
+        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+            <span class="onoffswitchyellow-inner"></span>
+            <span class="onoffswitchyellow-switch"></span>
+        </label>
+    </div>
+
 
     <div class="onoffswitchblue">
-            <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
-            <label class="onoffswitchblue-label" for="myonoffswitchblue">
-                <span class="onoffswitchblue-inner"></span>
-                <span class="onoffswitchblue-switch"></span>
-            </label>
-        </div>
+        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
+        <label class="onoffswitchblue-label" for="myonoffswitchblue">
+            <span class="onoffswitchblue-inner"></span>
+            <span class="onoffswitchblue-switch"></span>
+        </label>
+    </div>
 
 </body>
 
