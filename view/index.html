@@ -6,6 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         var red,blue,green,yellow;
+        var request = new XMLHttpRequest();
+        request.open('GET','https://lightledapi.herokuapp.com/led',false);
+        request.send(null);
+        var myVar = request.responseText;
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
@@ -25,10 +29,11 @@
             });
         });
         var myData = {}
-        // myData.blue = blue;
-        // myData.red = red;
-        // myData.yellow = yellow;
-        // myData.green = green;
+        myData.blue = JSON.parse(request.responseText)[0].blue;
+        myData.red = JSON.parse(request.responseText)[0].red;
+        myData.yellow = JSON.parse(request.responseText)[0].yellow;
+        myData.green = JSON.parse(request.responseText)[0].green;
+        console.log(myData)
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
                 myData.blue = !myData.blue
