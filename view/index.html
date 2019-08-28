@@ -25,11 +25,11 @@
                     blue = data[0].blue;
                     green = data[0].green;
                     yellow = data[0].yellow;
-                    if(red&&blue&&green&&yellow){
-                        $(".onoffswitch-checkbox").attr('checked',true );
+                    if (red && blue && green && yellow) {
+                        $(".onoffswitch-checkbox").attr('checked', true);
                     }
-                    else{
-                        $(".onoffswitch-checkbox").attr('checked',false );
+                    else {
+                        $(".onoffswitch-checkbox").attr('checked', false);
 
 
                     }
@@ -121,66 +121,107 @@
         $(document).ready(function () {
             $('.onoffswitch-checkbox').click(function () {
                 var x = document.getElementById("myonoffswitch").checked;
-                if(myData.red && myData.blue && myData.green && myData.yellow && !x){
+                if (myData.red && myData.blue && myData.green && myData.yellow && !x) {
                     $(".onoffswitchbred-checkbox").click();
                     $(".onoffswitchyellow-checkbox").click();
                     $(".onoffswitchgreen-checkbox").click();
                     $(".onoffswitchblue-checkbox").click();
                 }
-                else if(myData.red && myData.blue && myData.green && myData.yellow && x){
+                else if (myData.red && myData.blue && myData.green && myData.yellow && x) {
                 }
-                else if(!myData.red && !myData.blue && !myData.green && !myData.yellow && x){
+                else if (!myData.red && !myData.blue && !myData.green && !myData.yellow && x) {
                     $(".onoffswitchbred-checkbox").click();
                     $(".onoffswitchyellow-checkbox").click();
                     $(".onoffswitchgreen-checkbox").click();
                     $(".onoffswitchblue-checkbox").click();
                 }
-                else if(!myData.red && !myData.blue && !myData.green && !myData.yellow && !x){
+                else if (!myData.red && !myData.blue && !myData.green && !myData.yellow && !x) {
                 }
-                else if(!x)
-                {
-                    if(myData.red){
+                else if (!x) {
+                    if (myData.red) {
                         $(".onoffswitchbred-checkbox").click();
                     }
-                    if(myData.blue){
+                    if (myData.blue) {
                         $(".onoffswitchblue-checkbox").click();
                     }
-                    if(myData.yellow){
+                    if (myData.yellow) {
                         $(".onoffswitchyellow-checkbox").click();
                     }
-                    if(myData.green){
+                    if (myData.green) {
                         $(".onoffswitchgreen-checkbox").click();
                     }
                 }
-                else{
-                    if(!myData.red){
+                else {
+                    if (!myData.red) {
                         $(".onoffswitchbred-checkbox").click();
                     }
-                    if(!myData.blue){
+                    if (!myData.blue) {
                         $(".onoffswitchblue-checkbox").click();
                     }
-                    if(!myData.yellow){
+                    if (!myData.yellow) {
                         $(".onoffswitchyellow-checkbox").click();
                     }
-                    if(!myData.green){
+                    if (!myData.green) {
                         $(".onoffswitchgreen-checkbox").click();
                     }
                 }
-                $.ajax
-                    ({
-                        //type:Göndereceimiz metodu belirler
-                        type: "POST",
-                        //url :veri istenilen dosyanın adresi
-                        data: JSON.stringify(myData),
-                        contentType: 'application/json',
-                        url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function (data) {
-                            console.log('Success')
-                            console.log(JSON.stringify(data))
-                        }
-                    })
             });
         });
+        $(document).ready(function () {
+            $('.invert').click(function () {
+                $(".onoffswitchbred-checkbox").click();
+                $(".onoffswitchyellow-checkbox").click();
+                $(".onoffswitchblue-checkbox").click();
+                $(".onoffswitchgreen-checkbox").click();
+            });
+        });
+
+        $(document).ready(function () {
+            $('.animationButton').click(async function () {
+                var i;
+                for (i = 0; i < 5; i++) {
+                    $(".onoffswitchbred-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchgreen-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchyellow-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchblue-checkbox").click();
+                    await sleep(150);
+                }
+                for (i = 0; i < 5; i++) {
+                    $(".onoffswitchbred-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchyellow-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchgreen-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchblue-checkbox").click();
+                    await sleep(150);
+                }
+                for (i = 0; i < 5; i++) {
+                    $(".onoffswitchbred-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchgreen-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchyellow-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchblue-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchblue-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchyellow-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchgreen-checkbox").click();
+                    await sleep(150);
+                    $(".onoffswitchbred-checkbox").click();
+                    await sleep(150);
+                }
+            });
+        });
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
     </script>
 
     <style>
@@ -194,7 +235,6 @@
         }
 
         .onoffswitchblue-checkbox {
-
             display: none;
         }
 
@@ -272,8 +312,6 @@
             -moz-user-select: none;
             -ms-user-select: none;
             margin: auto;
-            margin-bottom: 5px;
-            margin-top: 10%;
         }
 
         .onoffswitchbred-checkbox {
@@ -354,7 +392,6 @@
             -moz-user-select: none;
             -ms-user-select: none;
             margin: auto;
-            margin-bottom: 5px;
         }
 
         .onoffswitchgreen-checkbox {
@@ -435,7 +472,6 @@
             -moz-user-select: none;
             -ms-user-select: none;
             margin: auto;
-            margin-bottom: 5px;
         }
 
         .onoffswitchyellow-checkbox {
@@ -512,15 +548,13 @@
         /*all on */
 
         .onoffswitch {
-            
+
             position: relative;
             width: 200px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             margin: auto;
-            margin-bottom: 5px;
-            margin-top: 5px;
         }
 
         .onoffswitch-checkbox {
@@ -596,57 +630,90 @@
 
 
         div {
-            position: absolute;
-            margin-top: 0.5%;
-            background-color: #eb830c
+            /* position: absolute; */
+            background-color: #eb830c;
         }
 
         body {
-            background-color: #eb830c
+            background-color: #eb830c;
         }
     </style>
 </head>
 
 <body>
-    <div class="onoffswitchbred">
-        <input type="checkbox" name="onoffswitchbred" class="onoffswitchbred-checkbox" id="myonoffswitchbred" checked>
-        <label class="onoffswitchbred-label" for="myonoffswitchbred">
-            <span class="onoffswitchbred-inner"></span>
-            <span class="onoffswitchbred-switch"></span>
-        </label>
-    </div>
-    <div class="onoffswitchgreen">
-        <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
-            checked>
-        <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
-            <span class="onoffswitchgreen-inner"></span>
-            <span class="onoffswitchgreen-switch"></span>
-        </label>
-    </div>
-    <div class="onoffswitchyellow">
-        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
-            checked>
-        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
-            <span class="onoffswitchyellow-inner"></span>
-            <span class="onoffswitchyellow-switch"></span>
-        </label>
-    </div>
-    <div class="onoffswitchblue">
-        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
-        <label class="onoffswitchblue-label" for="myonoffswitchblue">
-            <span class="onoffswitchblue-inner"></span>
-            <span class="onoffswitchblue-switch"></span>
-        </label>
-    </div>
+    <div>
+        <table align="center" style="margin-top: 10%;">
+            <tr>
+                <td>
+                    <div class="onoffswitchbred">
+                        <input type="checkbox" name="onoffswitchbred" class="onoffswitchbred-checkbox"
+                            id="myonoffswitchbred" checked>
+                        <label class="onoffswitchbred-label" for="myonoffswitchbred">
+                            <span class="onoffswitchbred-inner"></span>
+                            <span class="onoffswitchbred-switch"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    ABC
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="onoffswitchgreen">
+                        <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox"
+                            id="myonoffswitchgreen" checked>
+                        <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
+                            <span class="onoffswitchgreen-inner"></span>
+                            <span class="onoffswitchgreen-switch"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <button class="animationButton">PRESS</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="onoffswitchyellow">
+                        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox"
+                            id="myonoffswitchyellow" checked>
+                        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+                            <span class="onoffswitchyellow-inner"></span>
+                            <span class="onoffswitchyellow-switch"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <button class="invert">INVERT</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
 
-    <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-        <label class="onoffswitch-label" for="myonoffswitch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-        </label>
-    </div>
+                    <div class="onoffswitchblue">
+                        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox"
+                            id="myonoffswitchblue" checked>
+                        <label class="onoffswitchblue-label" for="myonoffswitchblue">
+                            <span class="onoffswitchblue-inner"></span>
+                            <span class="onoffswitchblue-switch"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                            checked>
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
 
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 
 </html>
