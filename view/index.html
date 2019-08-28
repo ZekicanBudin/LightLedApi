@@ -41,7 +41,6 @@
         myData.red = JSON.parse(request.responseText)[0].red;
         myData.yellow = JSON.parse(request.responseText)[0].yellow;
         myData.green = JSON.parse(request.responseText)[0].green;
-        console.log(myData)
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
                 myData.blue = !myData.blue
@@ -102,12 +101,6 @@
         });
         $(document).ready(function () {
             $('.onoffswitchyellow-checkbox').click(function () {
-                // if(yellow){
-                //     myData.yellow = false;
-                // }
-                // else{
-                //     myData.yellow = true;
-                // }
                 myData.yellow = !myData.yellow
                 $.ajax
                     ({
@@ -124,27 +117,54 @@
                     })
             });
         });
-
         //LIGHT ALL
-        
         $(document).ready(function () {
             $('.onoffswitch-checkbox').click(function () {
-                if(myData.red && myData.blue && myData.green && myData.yellow){
-                    $(".onoffswitchbred-checkbox").attr('checked', false);
-                   // $(".onoffswitchyellow-checkbox").attr('checked', false);
-                    $(".onoffswitchblue-checkbox").attr('checked', false);
-                    $(".onoffswitchgreen-checkbox").attr('checked', false);
+                var x = document.getElementById("myonoffswitch").checked;
+                if(myData.red && myData.blue && myData.green && myData.yellow && !x){
+                    $(".onoffswitchbred-checkbox").click();
                     $(".onoffswitchyellow-checkbox").click();
-                    
+                    $(".onoffswitchgreen-checkbox").click();
+                    $(".onoffswitchblue-checkbox").click();
+                }
+                else if(myData.red && myData.blue && myData.green && myData.yellow && x){
+                }
+                else if(!myData.red && !myData.blue && !myData.green && !myData.yellow && x){
+                    $(".onoffswitchbred-checkbox").click();
+                    $(".onoffswitchyellow-checkbox").click();
+                    $(".onoffswitchgreen-checkbox").click();
+                    $(".onoffswitchblue-checkbox").click();
+                }
+                else if(!myData.red && !myData.blue && !myData.green && !myData.yellow && !x){
+                }
+                else if(!x)
+                {
+                    if(myData.red){
+                        $(".onoffswitchbred-checkbox").click();
+                    }
+                    if(myData.blue){
+                        $(".onoffswitchblue-checkbox").click();
+                    }
+                    if(myData.yellow){
+                        $(".onoffswitchyellow-checkbox").click();
+                    }
+                    if(myData.green){
+                        $(".onoffswitchgreen-checkbox").click();
+                    }
                 }
                 else{
-                    $(".onoffswitchbred-checkbox").attr('checked', true);
-                    //$(".onoffswitchyellow-checkbox").attr('checked', true);
-                    $(".onoffswitchblue-checkbox").attr('checked', true);
-                    $(".onoffswitchgreen-checkbox").attr('checked', true);
-                    $(".onoffswitchyellow-checkbox").click();
-
-
+                    if(!myData.red){
+                        $(".onoffswitchbred-checkbox").click();
+                    }
+                    if(!myData.blue){
+                        $(".onoffswitchblue-checkbox").click();
+                    }
+                    if(!myData.yellow){
+                        $(".onoffswitchyellow-checkbox").click();
+                    }
+                    if(!myData.green){
+                        $(".onoffswitchgreen-checkbox").click();
+                    }
                 }
                 $.ajax
                     ({
