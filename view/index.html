@@ -25,6 +25,14 @@
                     blue = data[0].blue;
                     green = data[0].green;
                     yellow = data[0].yellow;
+                    if(red&&blue&&green&&yellow){
+                        $(".onoffswitch-checkbox").attr('checked',true );
+                    }
+                    else{
+                        $(".onoffswitch-checkbox").attr('checked',false );
+
+
+                    }
                 }
             });
         });
@@ -101,6 +109,43 @@
                 //     myData.yellow = true;
                 // }
                 myData.yellow = !myData.yellow
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
+                        success: function (data) {
+                            console.log('Success')
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+            });
+        });
+
+        //LIGHT ALL
+        
+        $(document).ready(function () {
+            $('.onoffswitch-checkbox').click(function () {
+                if(myData.red && myData.blue && myData.green && myData.yellow){
+                    $(".onoffswitchbred-checkbox").attr('checked', false);
+                   // $(".onoffswitchyellow-checkbox").attr('checked', false);
+                    $(".onoffswitchblue-checkbox").attr('checked', false);
+                    $(".onoffswitchgreen-checkbox").attr('checked', false);
+                    $(".onoffswitchyellow-checkbox").click();
+                    
+                }
+                else{
+                    $(".onoffswitchbred-checkbox").attr('checked', true);
+                    //$(".onoffswitchyellow-checkbox").attr('checked', true);
+                    $(".onoffswitchblue-checkbox").attr('checked', true);
+                    $(".onoffswitchgreen-checkbox").attr('checked', true);
+                    $(".onoffswitchyellow-checkbox").click();
+
+
+                }
                 $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
