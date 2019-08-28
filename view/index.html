@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
+        var red,blue,green,yellow;
         var request = new XMLHttpRequest();
-        request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
+        request.open('GET','https://lightledapi.herokuapp.com/led',false);
         request.send(null);
         var myVar = request.responseText;
         $(document).ready(function () {
@@ -14,20 +15,24 @@
                 type: "GET",
                 dataType: "json",
                 url: "https://lightledapi.herokuapp.com/led",
-                cors: true,
+                cors:true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
                     $(".onoffswitchblue-checkbox").attr('checked', data[0].blue);
                     $(".onoffswitchgreen-checkbox").attr('checked', data[0].green);
+                    red = data[0].red;
+                    blue = data[0].blue;
+                    green = data[0].green;
+                    yellow = data[0].yellow;
                 }
             });
         });
         var myData = {}
-        myData.blue = JSON.parse(myVar)[0].blue;
-        myData.red = JSON.parse(myVar)[0].red;
-        myData.yellow = JSON.parse(myVar)[0].yellow;
-        myData.green = JSON.parse(myVar)[0].green;
+        myData.blue = JSON.parse(request.responseText)[0].blue;
+        myData.red = JSON.parse(request.responseText)[0].red;
+        myData.yellow = JSON.parse(request.responseText)[0].yellow;
+        myData.green = JSON.parse(request.responseText)[0].green;
         console.log(myData)
         $(document).ready(function () {
             $('.onoffswitchblue-checkbox').click(function () {
@@ -40,7 +45,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function (data) {
+                        success: function(data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -62,7 +67,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function (data) {
+                        success: function(data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -80,7 +85,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function (data) {
+                        success: function(data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -104,7 +109,7 @@
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function (data) {
+                        success: function(data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -116,10 +121,11 @@
     <style>
         .onoffswitchblue {
             position: relative;
-            width: 90px;
+            width: 200px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            margin: auto;
         }
 
         .onoffswitchblue-checkbox {
@@ -131,8 +137,8 @@
             display: block;
             overflow: hidden;
             cursor: pointer;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            border: 2px solid #000000;
+            border-radius: 50px;
         }
 
         .onoffswitchblue-inner {
@@ -147,10 +153,10 @@
             display: block;
             float: left;
             width: 50%;
-            height: 30px;
+            height: 75px;
             padding: 0;
-            line-height: 30px;
-            font-size: 14px;
+            line-height: 75px;
+            font-size: 40px;
             color: white;
             font-family: Trebuchet, Arial, sans-serif;
             font-weight: bold;
@@ -159,30 +165,30 @@
 
         .onoffswitchblue-inner:before {
             content: "ON";
-            padding-left: 10px;
+            padding-left: 50px;
             background-color: #34A7C1;
             color: #FFFFFF;
         }
 
         .onoffswitchblue-inner:after {
             content: "OFF";
-            padding-right: 10px;
-            background-color: #EEEEEE;
+            padding-right: 50px;
+            background-color: #000000;
             color: #34A7C1;
             text-align: right;
         }
 
         .onoffswitchblue-switch {
             display: block;
-            width: 18px;
-            margin: 6px;
+            width: 50px;
+            margin: 12.5px;
             background: #FFFFFF;
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 56px;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            right: 121px;
+            border: 2px solid #000000;
+            border-radius: 50px;
             transition: all 0.3s ease-in 0s;
         }
 
@@ -196,10 +202,13 @@
 
         .onoffswitchbred {
             position: relative;
-            width: 90px;
+            width: 200px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            margin:auto;
+            margin-bottom: 5px;
+            margin-top: 10%;
         }
 
         .onoffswitchbred-checkbox {
@@ -210,8 +219,8 @@
             display: block;
             overflow: hidden;
             cursor: pointer;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            border: 2px solid #000000;
+            border-radius: 50px;
         }
 
         .onoffswitchbred-inner {
@@ -226,10 +235,10 @@
             display: block;
             float: left;
             width: 50%;
-            height: 30px;
+            height: 75px;
             padding: 0;
-            line-height: 30px;
-            font-size: 14px;
+            line-height: 75px;
+            font-size: 40px;
             color: white;
             font-family: Trebuchet, Arial, sans-serif;
             font-weight: bold;
@@ -238,30 +247,30 @@
 
         .onoffswitchbred-inner:before {
             content: "ON";
-            padding-left: 10px;
+            padding-left: 50px;
             background-color: #FA2020;
             color: #FFFFFF;
         }
 
         .onoffswitchbred-inner:after {
             content: "OFF";
-            padding-right: 10px;
-            background-color: #EEEEEE;
+            padding-right: 50px;
+            background-color: #000000;
             color: #FA2020;
             text-align: right;
         }
 
         .onoffswitchbred-switch {
             display: block;
-            width: 18px;
-            margin: 6px;
+            width: 50px;
+            margin: 12.5px;
             background: #FFFFFF;
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 56px;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            right: 121px;
+            border: 2px solid #000000;
+            border-radius: 50px;
             transition: all 0.3s ease-in 0s;
         }
 
@@ -275,10 +284,12 @@
 
         .onoffswitchgreen {
             position: relative;
-            width: 90px;
+            width: 200px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            margin:auto;
+            margin-bottom: 5px;
         }
 
         .onoffswitchgreen-checkbox {
@@ -289,8 +300,8 @@
             display: block;
             overflow: hidden;
             cursor: pointer;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            border: 2px solid #000000;
+            border-radius: 50px;
         }
 
         .onoffswitchgreen-inner {
@@ -305,10 +316,10 @@
             display: block;
             float: left;
             width: 50%;
-            height: 30px;
+            height: 75px;
             padding: 0;
-            line-height: 30px;
-            font-size: 14px;
+            line-height: 75px;
+            font-size: 40px;
             color: white;
             font-family: Trebuchet, Arial, sans-serif;
             font-weight: bold;
@@ -317,30 +328,30 @@
 
         .onoffswitchgreen-inner:before {
             content: "ON";
-            padding-left: 10px;
+            padding-left: 50px;
             background-color: #19E64C;
             color: #FFFFFF;
         }
 
         .onoffswitchgreen-inner:after {
             content: "OFF";
-            padding-right: 10px;
-            background-color: #EEEEEE;
+            padding-right: 50px;
+            background-color: #000000;
             color: #19E64C;
             text-align: right;
         }
 
         .onoffswitchgreen-switch {
             display: block;
-            width: 18px;
-            margin: 6px;
+            width: 50px;
+            margin: 12.5px;
             background: #FFFFFF;
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 56px;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            right: 121px;
+            border: 2px solid #000000;
+            border-radius: 50px;
             transition: all 0.3s ease-in 0s;
         }
 
@@ -354,10 +365,12 @@
 
         .onoffswitchyellow {
             position: relative;
-            width: 90px;
+            width: 200px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            margin:auto;
+            margin-bottom: 5px;
         }
 
         .onoffswitchyellow-checkbox {
@@ -368,8 +381,8 @@
             display: block;
             overflow: hidden;
             cursor: pointer;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            border: 2px solid #000000;
+            border-radius: 50px;
         }
 
         .onoffswitchyellow-inner {
@@ -384,10 +397,10 @@
             display: block;
             float: left;
             width: 50%;
-            height: 30px;
+            height: 75px;
             padding: 0;
-            line-height: 30px;
-            font-size: 14px;
+            line-height: 75px;
+            font-size: 40px;
             color: white;
             font-family: Trebuchet, Arial, sans-serif;
             font-weight: bold;
@@ -396,30 +409,30 @@
 
         .onoffswitchyellow-inner:before {
             content: "ON";
-            padding-left: 10px;
+            padding-left: 50px;
             background-color: #EBEB2F;
             color: #FFFFFF;
         }
 
         .onoffswitchyellow-inner:after {
             content: "OFF";
-            padding-right: 10px;
-            background-color: #EEEEEE;
+            padding-right: 50px;
+            background-color: #000000;
             color: #EBEB2F;
             text-align: right;
         }
 
         .onoffswitchyellow-switch {
             display: block;
-            width: 18px;
-            margin: 6px;
+            width: 50px;
+            margin: 12.5px;
             background: #FFFFFF;
             position: absolute;
             top: 0;
             bottom: 0;
-            right: 56px;
-            border: 2px solid #999999;
-            border-radius: 20px;
+            right: 121px;
+            border: 2px solid #000000;
+            border-radius: 50px;
             transition: all 0.3s ease-in 0s;
         }
 
@@ -430,11 +443,19 @@
         .onoffswitchyellow-checkbox:checked+.onoffswitchyellow-label .onoffswitchyellow-switch {
             right: 0px;
         }
+        div{
+            position: absolute;
+            margin-top: 0.5%;
+            background-color :#eb830c
+
+        }
+        body {
+            background-color: #eb830c
+        }
     </style>
 </head>
 
 <body>
-
     <div class="onoffswitchbred">
         <input type="checkbox" name="onoffswitchbred" class="onoffswitchbred-checkbox" id="myonoffswitchbred" checked>
         <label class="onoffswitchbred-label" for="myonoffswitchbred">
@@ -443,32 +464,28 @@
         </label>
     </div>
     <div class="onoffswitchgreen">
-        <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
-            checked>
-        <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
-            <span class="onoffswitchgreen-inner"></span>
-            <span class="onoffswitchgreen-switch"></span>
-        </label>
-    </div>
-
+            <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
+                checked>
+            <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
+                <span class="onoffswitchgreen-inner"></span>
+                <span class="onoffswitchgreen-switch"></span>
+            </label>
+        </div>
     <div class="onoffswitchyellow">
-        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
-            checked>
-        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
-            <span class="onoffswitchyellow-inner"></span>
-            <span class="onoffswitchyellow-switch"></span>
-        </label>
-    </div>
-
-
+            <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
+                checked>
+            <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+                <span class="onoffswitchyellow-inner"></span>
+                <span class="onoffswitchyellow-switch"></span>
+            </label>
+        </div>
     <div class="onoffswitchblue">
-        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
-        <label class="onoffswitchblue-label" for="myonoffswitchblue">
-            <span class="onoffswitchblue-inner"></span>
-            <span class="onoffswitchblue-switch"></span>
-        </label>
-    </div>
-
+            <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
+            <label class="onoffswitchblue-label" for="myonoffswitchblue">
+                <span class="onoffswitchblue-inner"></span>
+                <span class="onoffswitchblue-switch"></span>
+            </label>
+        </div>
 </body>
 
 </html>
