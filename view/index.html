@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
-        var red,blue,green,yellow;
+        var red, blue, green, yellow;
         var request = new XMLHttpRequest();
-        request.open('GET','https://lightledapi.herokuapp.com/led',false);
+        request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
         request.send(null);
         var myVar = request.responseText;
         $(document).ready(function () {
@@ -15,7 +15,7 @@
                 type: "GET",
                 dataType: "json",
                 url: "https://lightledapi.herokuapp.com/led",
-                cors:true,
+                cors: true,
                 success: function (data) {
                     $(".onoffswitchbred-checkbox").attr('checked', data[0].red);
                     $(".onoffswitchyellow-checkbox").attr('checked', data[0].yellow);
@@ -41,11 +41,11 @@
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
-                        //url :veri istenilen php dosyasının adresi
+                        //url :veri istenilen dosyanın adresi
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -63,11 +63,11 @@
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
-                        //url :veri istenilen php dosyasının adresi
+                        //url :veri istenilen dosyanın adresi
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -81,11 +81,11 @@
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
-                        //url :veri istenilen php dosyasının adresi
+                        //url :veri istenilen dosyanın adresi
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -105,11 +105,11 @@
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
-                        //url :veri istenilen php dosyasının adresi
+                        //url :veri istenilen dosyanın adresi
                         data: JSON.stringify(myData),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/led/update',
-                        success: function(data) {
+                        success: function (data) {
                             console.log('Success')
                             console.log(JSON.stringify(data))
                         }
@@ -206,7 +206,7 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            margin:auto;
+            margin: auto;
             margin-bottom: 5px;
             margin-top: 10%;
         }
@@ -288,7 +288,7 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            margin:auto;
+            margin: auto;
             margin-bottom: 5px;
         }
 
@@ -369,7 +369,7 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            margin:auto;
+            margin: auto;
             margin-bottom: 5px;
         }
 
@@ -443,12 +443,99 @@
         .onoffswitchyellow-checkbox:checked+.onoffswitchyellow-label .onoffswitchyellow-switch {
             right: 0px;
         }
-        div{
+
+        /*all on */
+
+        .onoffswitch {
+            
+            position: relative;
+            width: 200px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            margin: auto;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .onoffswitch-checkbox {
+            display: none;
+        }
+
+        .onoffswitch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #000000;
+            border-radius: 50px;
+        }
+
+        .onoffswitch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-inner:before,
+        .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 75px;
+            padding: 0;
+            line-height: 75px;
+            font-size: 40px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "ON";
+            padding-left: 50px;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        .onoffswitch-inner:after {
+            content: "OFF";
+            padding-right: 50px;
+            background-color: #000000;
+            color: #FFFFFF;
+            text-align: right;
+        }
+
+        .onoffswitch-switch {
+            display: block;
+            width: 50px;
+            margin: 12.5px;
+            background: #FFFFFF;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 121px;
+            border: 2px solid #000000;
+            border-radius: 50px;
+            transition: all 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+
+
+        div {
             position: absolute;
             margin-top: 0.5%;
-            background-color :#eb830c
-
+            background-color: #eb830c
         }
+
         body {
             background-color: #eb830c
         }
@@ -464,28 +551,37 @@
         </label>
     </div>
     <div class="onoffswitchgreen">
-            <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
-                checked>
-            <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
-                <span class="onoffswitchgreen-inner"></span>
-                <span class="onoffswitchgreen-switch"></span>
-            </label>
-        </div>
+        <input type="checkbox" name="onoffswitchgreen" class="onoffswitchgreen-checkbox" id="myonoffswitchgreen"
+            checked>
+        <label class="onoffswitchgreen-label" for="myonoffswitchgreen">
+            <span class="onoffswitchgreen-inner"></span>
+            <span class="onoffswitchgreen-switch"></span>
+        </label>
+    </div>
     <div class="onoffswitchyellow">
-            <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
-                checked>
-            <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
-                <span class="onoffswitchyellow-inner"></span>
-                <span class="onoffswitchyellow-switch"></span>
-            </label>
-        </div>
+        <input type="checkbox" name="onoffswitchyellow" class="onoffswitchyellow-checkbox" id="myonoffswitchyellow"
+            checked>
+        <label class="onoffswitchyellow-label" for="myonoffswitchyellow">
+            <span class="onoffswitchyellow-inner"></span>
+            <span class="onoffswitchyellow-switch"></span>
+        </label>
+    </div>
     <div class="onoffswitchblue">
-            <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
-            <label class="onoffswitchblue-label" for="myonoffswitchblue">
-                <span class="onoffswitchblue-inner"></span>
-                <span class="onoffswitchblue-switch"></span>
-            </label>
-        </div>
+        <input type="checkbox" name="onoffswitchblue" class="onoffswitchblue-checkbox" id="myonoffswitchblue" checked>
+        <label class="onoffswitchblue-label" for="myonoffswitchblue">
+            <span class="onoffswitchblue-inner"></span>
+            <span class="onoffswitchblue-switch"></span>
+        </label>
+    </div>
+
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
+    </div>
+
 </body>
 
 </html>
