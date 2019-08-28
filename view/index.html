@@ -117,6 +117,23 @@
                     })
             });
         });
+        $(document).ready(function () {
+            $('.myButtonRandom').click(function () {
+                var x = Math.floor(Math.random() * 4);
+                if (x == 0) {
+                    $(".onoffswitchbred-checkbox").click();
+                }
+                else if (x == 1) {
+                    $(".onoffswitchyellow-checkbox").click();
+                }
+                else if (x == 2) {
+                    $(".onoffswitchgreen-checkbox").click();
+                }
+                else {
+                    $(".onoffswitchblue-checkbox").click();
+                }
+            });
+        });
         //LIGHT ALL
         $(document).ready(function () {
             $('.onoffswitch-checkbox').click(function () {
@@ -179,6 +196,7 @@
         $(document).ready(function () {
             $('.animationButton').click(async function () {
                 var i;
+                /*
                 for (i = 0; i < 5; i++) {
                     $(".onoffswitchbred-checkbox").click();
                     await sleep(150);
@@ -189,6 +207,7 @@
                     $(".onoffswitchblue-checkbox").click();
                     await sleep(150);
                 }
+                */
                 for (i = 0; i < 5; i++) {
                     $(".onoffswitchbred-checkbox").click();
                     await sleep(150);
@@ -199,6 +218,7 @@
                     $(".onoffswitchblue-checkbox").click();
                     await sleep(150);
                 }
+                /*
                 for (i = 0; i < 5; i++) {
                     $(".onoffswitchbred-checkbox").click();
                     await sleep(150);
@@ -217,6 +237,7 @@
                     $(".onoffswitchbred-checkbox").click();
                     await sleep(150);
                 }
+                */
             });
         });
         function sleep(ms) {
@@ -493,7 +514,8 @@
             transition: margin 0.3s ease-in 0s;
         }
 
-        .onoffswitchyellow-inner:before, .onoffswitchyellow-inner:after {
+        .onoffswitchyellow-inner:before,
+        .onoffswitchyellow-inner:after {
             display: block;
             float: left;
             width: 50%;
@@ -591,14 +613,14 @@
         }
 
         .onoffswitch-inner:before {
-            content: "ON";
+            content: "ALL";
             padding-left: 50px;
             background-color: #FFFFFF;
             color: #000000;
         }
 
         .onoffswitch-inner:after {
-            content: "OFF";
+            content: "ALL";
             padding-right: 50px;
             background-color: #000000;
             color: #FFFFFF;
@@ -628,44 +650,121 @@
         }
 
         .myButtonRandom {
-            -moz-box-shadow: 0px 10px 14px -7px #276873;
-            -webkit-box-shadow: 0px 10px 14px -7px #276873;
-            box-shadow: 0px 10px 14px -7px #276873;
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
-            background: -moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
-            background: -webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
-            background: -o-linear-gradient(top, #599bb3 5%, #408c99 100%);
-            background: -ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
-            background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99', GradientType=0);
-            background-color: #599bb3;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            border-radius: 42px;
-            display: inline-block;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, #212627 5%, #c75c5c 100%);
+            background: -webkit-linear-gradient(top, #212627 5%, #c75c5c 100%);
+            background: -o-linear-gradient(top, #212627 5%, #c75c5c 100%);
+            background: -ms-linear-gradient(top, #212627 5%, #c75c5c 100%);
+            background: linear-gradient(to bottom, #212627 5%, #c75c5c 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
+            background-color: purple;
+            border-radius: 50px;
+            display: block;
             cursor: pointer;
-            color: #ffffff;
+            border: solid 2px black;
+            color: white;
             font-family: Arial;
-            font-size: 20px;
+            font-size: 40px;
             font-weight: bold;
-            font-style: italic;
-            padding: 30px 55px;
+            padding: 15px 8px 15px 8px;
             text-decoration: none;
-            text-shadow: 0px 1px 0px #3d768a;
+            text-shadow: 0px 1px 0px white;
+            margin: auto;
+            position:relative;
         }
 
         .myButtonRandom:hover {
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
-            background: -moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
-            background: -webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
-            background: -o-linear-gradient(top, #408c99 5%, #599bb3 100%);
-            background: -ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
-            background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3', GradientType=0);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, #c75c5c 5%, #212627 100%);
+            background: -webkit-linear-gradient(top, #c75c5c 5%, #212627 100%);
+            background: -o-linear-gradient(top, #c75c5c 5%, #212627 100%);
+            background: -ms-linear-gradient(top, #c75c5c 5%, #212627 100%);
+            background: linear-gradient(to bottom, #c75c5c 5%, #212627 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
             background-color: #408c99;
         }
 
         .myButtonRandom:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .animationButton {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, #000000 5%, #4e0202 100%);
+            background: -webkit-linear-gradient(top, #000000 5%, #4e0202 100%);
+            background: -o-linear-gradient(top, #000000 5%, #4e0202 100%);
+            background: -ms-linear-gradient(top, #000000 5%, #4e0202 100%);
+            background: linear-gradient(to bottom, #000000 5%, #4e0202 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
+            background-color: purple;
+            border-radius: 50px;
+            display: block;
+            cursor: pointer;
+            border: solid 2px black;
+            color: white;
+            font-family: Arial;
+            font-size: 40px;
+            font-weight: bold;
+            padding: 15px 32.5px 15px 32.5px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px white;
+            margin: auto;
+            position:relative;
+        }
+
+        .animationButton:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, #4e0202 5%, #000000 100%);
+            background: -webkit-linear-gradient(top, #4e0202 5%, #000000 100%);
+            background: -o-linear-gradient(top, #4e0202 5%, #000000 100%);
+            background: -ms-linear-gradient(top, #4e0202 5%, #000000 100%);
+            background: linear-gradient(to bottom, #4e0202 5%, #000000 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
+            background-color: #408c99;
+        }
+
+        .animationButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .invert {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, #090357 5%, purple 100%);
+            background: -webkit-linear-gradient(top, #090357 5%, purple 100%);
+            background: -o-linear-gradient(top, #090357 5%, purple 100%);
+            background: -ms-linear-gradient(top, #090357 5%, purple 100%);
+            background: linear-gradient(to bottom, #090357 5%, purple 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
+            background-color: purple;
+            border-radius: 50px;
+            display: block;
+            cursor: pointer;
+            border: solid 2px black;
+            color: white;
+            font-family: Arial;
+            font-size: 40px;
+            font-weight: bold;
+            padding: 15px 25px 15px 25px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px white;
+            margin: auto;
+            position:relative;
+        }
+
+        .invert:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
+            background: -moz-linear-gradient(top, purple 5%, #090357 100%);
+            background: -webkit-linear-gradient(top, purple 5%, #090357 100%);
+            background: -o-linear-gradient(top, purple 5%, #090357 100%);
+            background: -ms-linear-gradient(top, purple 5%, #090357 100%);
+            background: linear-gradient(to bottom, purple 5%, #090357 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090357', endColorstr='#090357', GradientType=0);
+            background-color: #408c99;
+        }
+
+        .invert:active {
             position: relative;
             top: 1px;
         }
@@ -678,6 +777,9 @@
         body {
             background-color: #eb830c;
         }
+
+        /* 
+---------------------------------------------- */
     </style>
 </head>
 
@@ -696,7 +798,7 @@
                     </div>
                 </td>
                 <td>
-                    ABC
+                    <button class="myButtonRandom">RANDOM</button>
                 </td>
             </tr>
             <tr>
@@ -711,7 +813,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="animationButton">PRESS</button>
+                    <button class="animationButton">ANIMA</button>
                 </td>
             </tr>
             <tr>
@@ -754,7 +856,7 @@
                 </td>
             </tr>
         </table>
-            <a href="#" class="myButtonRandom">RANDOM</a>
+
 
     </div>
 </body>
