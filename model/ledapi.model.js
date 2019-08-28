@@ -33,7 +33,6 @@ let ledSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Led', ledSchema)
-
 /*
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://<username>:<password>@stajmigapi-brdl6.mongodb.net/test?retryWrites=true&w=majority";
