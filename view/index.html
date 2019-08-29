@@ -265,18 +265,33 @@
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
             message.textContent = 'Voice Input: ' + command + '.';
-            if(command.toLowerCase() === 'select steve'){
-                document.querySelector('#chkSteve').checked = true;
+            if(command.toLowerCase() === 'select blue' || command.toLowerCase() === 'blue'){
+                $(".onoffswitchblue-checkbox").click();
             }
-            else if (command.toLowerCase() === 'select tony'){
-                document.querySelector('#chkTony').checked = true;
+            else if (command.toLowerCase() === 'select red' || command.toLowerCase() === 'red'){
+                $(".onoffswitchbred-checkbox").click();
             }
-            else if (command.toLowerCase() === 'select bruce'){
-                document.querySelector('#chkBruce').checked = true;
+            else if (command.toLowerCase() === 'select green' || command.toLowerCase() === 'green'){
+                $(".onoffswitchgreen-checkbox").click();
             }
-            else if (command.toLowerCase() === 'select nick'){
-                document.querySelector('#chkNick').checked = true;
+            else if (command.toLowerCase() === 'select yellow' || command.toLowerCase() === 'yellow'){
+                $(".onoffswitchyellow-checkbox").click();
+            }
+            else if (command.toLowerCase() === 'select random' || command.toLowerCase() === 'random'){
+                $('.myButtonRandom').click();
             }   
+            else if (command.toLowerCase() === 'select all' || command.toLowerCase() === 'all'){
+                $(".onoffswitch-checkbox").click();
+            }   
+            else if (command.toLowerCase() === 'select invert' || command.toLowerCase() === 'invert'){
+                $('.invert').click();
+            }   
+            else if (command.toLowerCase() === 'select mors' || command.toLowerCase() === 'mors'){
+                
+            }
+            else if (command.toLowerCase() === 'select anima' || command.toLowerCase() === 'animation' || command.toLowerCase() === 'anima' || command.toLowerCase() === 'select animation'){
+                $('.animationButton').click();
+            }      
         };
         recognition.onspeechend = function() {
             recognition.stop();
@@ -1005,9 +1020,8 @@
 
 
     </div>
-    <input type="text" id="fname" name="firstname" placeholder=" ">
+    <input type="text" id="fname" name="firstname" placeholder="">
     <span id='message'></span>
-    <button id='btnGiveCommand'>Give Command!</button>
 </body>
 
 </html>
