@@ -323,46 +323,57 @@
         $(document).ready(function () {
             $('.submitButton').click(function () {
                 var textValue = document.getElementById("fname").value;
-                document.getElementById("fname").value = "";
                 if(textValue === "KIRMIZI" || textValue === "Kırmızı" || textValue === "kırmızı" || textValue === "Kirmizi" || textValue.toLowerCase() === "red"  || textValue === "KİRMİZİ" || textValue === "kirmizi"){
+                    document.getElementById("fname").value = "";
                     $(".onoffswitchbred-checkbox").click();
                 }
                 else if(textValue === "YEŞİL" || textValue === "Yeşil" || textValue === "yeşil" || textValue.toLowerCase() === "yeşil" || textValue.toLowerCase() === "green"  || textValue === "Yesil" || textValue === "YESİL" || textValue === "yesil"){
+                    document.getElementById("fname").value = "";
                     $(".onoffswitchgreen-checkbox").click();
                 }
                 else if(textValue === "Sarı" || textValue === "SARI" || textValue === "sarı" || textValue.toLowerCase() === "sarı" || textValue.toLowerCase() === "yellow"  || textValue === "SARİ" || textValue === "Sari" || textValue === "sari" || textValue.toLowerCase() === "sari"){
+                    document.getElementById("fname").value = "";
                     $(".onoffswitchyellow-checkbox").click();
                 }
                 else if(textValue === "MAVİ" || textValue === "Mavi" || textValue === "mavi" || textValue.toLowerCase() === "mavi" || textValue.toLowerCase() === "blue"  || textValue === "MAVI" || textValue === "Mavı" || textValue === "mavı" || textValue.toLowerCase() === "mavı"){
+                    document.getElementById("fname").value = "";
                     $(".onoffswitchblue-checkbox").click();
                 }
                 else if(textValue === "HEPSİ" || textValue === "Hepsi" || textValue === "hepsi" || textValue.toLowerCase() === "hepsi" || textValue.toLowerCase() === "all"  || textValue === "HEPSI" || textValue === "Hepsı" || textValue === "hepsı" || textValue.toLowerCase() === "hepsı"){
+                    document.getElementById("fname").value = "";
                     $(".onoffswitch-checkbox").click();
                 }
                 else if(textValue.toLowerCase() === "rasgele" || textValue.toLowerCase() === "rastgele" || textValue.toLowerCase() === "random" ){
                     $(".myButtonRandom").click();
                 }
                 else if(textValue === "ANİMA" || textValue === "Anima" || textValue === "anima" || textValue.toLowerCase() === "anima" || textValue.toLowerCase() === "animation"  || textValue === "anıma"){
+                    document.getElementById("fname").value = "";
                     $(".animationButton").click();
                 }
                 else if(textValue.toLowerCase() === "ters" || textValue === "ÇEVİR" || textValue === "Çevir" || textValue.toLowerCase() === "çevir" || textValue.toLowerCase() === "invert"){
+                    document.getElementById("fname").value = "";
                     $(".invert").click();
                 }
                 else if(textValue.toLowerCase() === "voice" || textValue.toLowerCase() === "komut" || textValue.toLowerCase() === "ses" || textValue.toLowerCase() === "sesli komut"){
+                    document.getElementById("fname").value = "";
                     $(".alexa").click();
                 }
                 else if(textValue.toLowerCase().substring(0,4)==="mors"){
-                    textToChange = textValue.substr(5).toLowerCase();
                     $(".mors").click();
                 }
                 else{
+                    document.getElementById("fname").value = "";
                     document.getElementById("fname").placeholder = "Komut Bulunamadı"
                 }
+                
             });
         });
         $(document).ready(function () {
             $('.mors').click( async function () {
                 textToChange = document.getElementById("fname").value;
+                if(textToChange.toLowerCase().substring(0,4)==="mors"){
+                    textToChange = textToChange.substr(5).toLowerCase();
+                }
                 document.getElementById("fname").value = "";
                 if (myData.red) {
                         $(".onoffswitchbred-checkbox").click();
