@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var red, blue, green, yellow, newText = "",textToChange = "";
+        var red, blue, green, yellow, newText = "", textToChange = "";
         var request = new XMLHttpRequest();
         request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
         request.send(null);
@@ -29,12 +29,23 @@
                     green = data[0].green;
                     yellow = data[0].yellow;
                     if (red && blue && green && yellow) {
-                        $(".onoffswitch-checkbox").attr('checked', true);
+                        $(".onoffswitch-checkbox").attr('checked', true);   
                     }
                     else {
                         $(".onoffswitch-checkbox").attr('checked', false);
-
-
+                        document.getElementsByClassName("led-mock-on")[0].setAttribute("class", "led-mock-off");
+                    }
+                    if(!red){
+                        document.getElementsByClassName("led-red-on")[0].setAttribute("class", "led-red-off");
+                    }
+                    if(!blue){
+                        document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
+                    }
+                    if(!yellow){
+                        document.getElementsByClassName("led-yellow-on")[0].setAttribute("class", "led-yellow-off");
+                    }
+                    if(!green){
+                        document.getElementsByClassName("led-green-on")[0].setAttribute("class", "led-green-off");
                     }
                     document.getElementById("fname").placeholder = "MERHABA";
                 }
@@ -66,6 +77,12 @@
                         //cors: true,
                     })
                 document.getElementById("fname").placeholder = "MAVİ";
+                if(myData.blue){
+                        document.getElementsByClassName("led-blue-off")[0].setAttribute("class", "led-blue-on");
+                }
+                else{
+                    document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
+                }
             });
         });
         $(document).ready(function () {
@@ -85,6 +102,12 @@
                         }
                     })
                 document.getElementById("fname").placeholder = "KIRMIZI";
+                if(myData.red){
+                        document.getElementsByClassName("led-red-off")[0].setAttribute("class", "led-red-on");
+                }
+                else{
+                    document.getElementsByClassName("led-red-on")[0].setAttribute("class", "led-red-off");
+                }
             });
         });
         $(document).ready(function () {
@@ -104,6 +127,12 @@
                         }
                     })
                 document.getElementById("fname").placeholder = "YEŞİL";
+                if(myData.green){
+                        document.getElementsByClassName("led-green-off")[0].setAttribute("class", "led-green-on");
+                }
+                else{
+                    document.getElementsByClassName("led-green-on")[0].setAttribute("class", "led-green-off");
+                }
             });
         });
         $(document).ready(function () {
@@ -123,6 +152,12 @@
                         }
                     })
                 document.getElementById("fname").placeholder = "SARI";
+                if(myData.yellow){
+                        document.getElementsByClassName("led-yellow-off")[0].setAttribute("class", "led-yellow-on");
+                }
+                else{
+                    document.getElementsByClassName("led-yellow-on")[0].setAttribute("class", "led-yellow-off");
+                }
             });
         });
         $(document).ready(function () {
@@ -192,6 +227,12 @@
                     }
                 }
                 document.getElementById("fname").placeholder = "HEPSİ";
+                if(x){
+                    document.getElementsByClassName("led-mock-off")[0].setAttribute("class", "led-mock-on");
+                }
+                else{
+                    document.getElementsByClassName("led-mock-on")[0].setAttribute("class", "led-mock-off");
+                }
             });
         });
         $(document).ready(function () {
@@ -323,86 +364,86 @@
         $(document).ready(function () {
             $('.submitButton').click(function () {
                 var textValue = document.getElementById("fname").value;
-                if(textValue === "KIRMIZI" || textValue === "Kırmızı" || textValue === "kırmızı" || textValue === "Kirmizi" || textValue.toLowerCase() === "red"  || textValue === "KİRMİZİ" || textValue === "kirmizi"){
+                if (textValue === "KIRMIZI" || textValue === "Kırmızı" || textValue === "kırmızı" || textValue === "Kirmizi" || textValue.toLowerCase() === "red" || textValue === "KİRMİZİ" || textValue === "kirmizi") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitchbred-checkbox").click();
                 }
-                else if(textValue === "YEŞİL" || textValue === "Yeşil" || textValue === "yeşil" || textValue.toLowerCase() === "yeşil" || textValue.toLowerCase() === "green"  || textValue === "Yesil" || textValue === "YESİL" || textValue === "yesil"){
+                else if (textValue === "YEŞİL" || textValue === "Yeşil" || textValue === "yeşil" || textValue.toLowerCase() === "yeşil" || textValue.toLowerCase() === "green" || textValue === "Yesil" || textValue === "YESİL" || textValue === "yesil") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitchgreen-checkbox").click();
                 }
-                else if(textValue === "Sarı" || textValue === "SARI" || textValue === "sarı" || textValue.toLowerCase() === "sarı" || textValue.toLowerCase() === "yellow"  || textValue === "SARİ" || textValue === "Sari" || textValue === "sari" || textValue.toLowerCase() === "sari"){
+                else if (textValue === "Sarı" || textValue === "SARI" || textValue === "sarı" || textValue.toLowerCase() === "sarı" || textValue.toLowerCase() === "yellow" || textValue === "SARİ" || textValue === "Sari" || textValue === "sari" || textValue.toLowerCase() === "sari") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitchyellow-checkbox").click();
                 }
-                else if(textValue === "MAVİ" || textValue === "Mavi" || textValue === "mavi" || textValue.toLowerCase() === "mavi" || textValue.toLowerCase() === "blue"  || textValue === "MAVI" || textValue === "Mavı" || textValue === "mavı" || textValue.toLowerCase() === "mavı"){
+                else if (textValue === "MAVİ" || textValue === "Mavi" || textValue === "mavi" || textValue.toLowerCase() === "mavi" || textValue.toLowerCase() === "blue" || textValue === "MAVI" || textValue === "Mavı" || textValue === "mavı" || textValue.toLowerCase() === "mavı") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitchblue-checkbox").click();
                 }
-                else if(textValue === "HEPSİ" || textValue === "Hepsi" || textValue === "hepsi" || textValue.toLowerCase() === "hepsi" || textValue.toLowerCase() === "all"  || textValue === "HEPSI" || textValue === "Hepsı" || textValue === "hepsı" || textValue.toLowerCase() === "hepsı"){
+                else if (textValue === "HEPSİ" || textValue === "Hepsi" || textValue === "hepsi" || textValue.toLowerCase() === "hepsi" || textValue.toLowerCase() === "all" || textValue === "HEPSI" || textValue === "Hepsı" || textValue === "hepsı" || textValue.toLowerCase() === "hepsı") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitch-checkbox").click();
                 }
-                else if(textValue.toLowerCase() === "rasgele" || textValue.toLowerCase() === "rastgele" || textValue.toLowerCase() === "random" ){
+                else if (textValue.toLowerCase() === "rasgele" || textValue.toLowerCase() === "rastgele" || textValue.toLowerCase() === "random") {
                     $(".myButtonRandom").click();
                 }
-                else if(textValue === "ANİMA" || textValue === "Anima" || textValue === "anima" || textValue.toLowerCase() === "anima" || textValue.toLowerCase() === "animation"  || textValue === "anıma"){
+                else if (textValue === "ANİMA" || textValue === "Anima" || textValue === "anima" || textValue.toLowerCase() === "anima" || textValue.toLowerCase() === "animation" || textValue === "anıma") {
                     document.getElementById("fname").value = "";
                     $(".animationButton").click();
                 }
-                else if(textValue.toLowerCase() === "ters" || textValue === "ÇEVİR" || textValue === "Çevir" || textValue.toLowerCase() === "çevir" || textValue.toLowerCase() === "invert"){
+                else if (textValue.toLowerCase() === "ters" || textValue === "ÇEVİR" || textValue === "Çevir" || textValue.toLowerCase() === "çevir" || textValue.toLowerCase() === "invert") {
                     document.getElementById("fname").value = "";
                     $(".invert").click();
                 }
-                else if(textValue.toLowerCase() === "voice" || textValue.toLowerCase() === "komut" || textValue.toLowerCase() === "ses" || textValue.toLowerCase() === "sesli komut"){
+                else if (textValue.toLowerCase() === "voice" || textValue.toLowerCase() === "komut" || textValue.toLowerCase() === "ses" || textValue.toLowerCase() === "sesli komut") {
                     document.getElementById("fname").value = "";
                     $(".alexa").click();
                 }
-                else if(textValue.toLowerCase().substring(0,4)==="mors"){
+                else if (textValue.toLowerCase().substring(0, 4) === "mors") {
                     $(".mors").click();
                 }
-                else{
+                else {
                     document.getElementById("fname").value = "";
                     document.getElementById("fname").placeholder = "Komut Bulunamadı"
                 }
-                
+
             });
         });
         $(document).ready(function () {
-            $('.mors').click( async function () {
+            $('.mors').click(async function () {
                 textToChange = document.getElementById("fname").value;
-                if(textToChange.toLowerCase().substring(0,4)==="mors"){
+                if (textToChange.toLowerCase().substring(0, 4) === "mors") {
                     textToChange = textToChange.substr(5).toLowerCase();
                 }
                 document.getElementById("fname").value = "";
                 if (myData.red) {
-                        $(".onoffswitchbred-checkbox").click();
-                    }
-                    if (myData.blue) {
-                        $(".onoffswitchblue-checkbox").click();
-                    }
-                    if (myData.yellow) {
-                        $(".onoffswitchyellow-checkbox").click();
-                    }
-                    if (myData.green) {
-                        $(".onoffswitchgreen-checkbox").click();
-                    }
-                    document.getElementById("fname").placeholder = "MORS"
-                    await sleep(500);
+                    $(".onoffswitchbred-checkbox").click();
+                }
+                if (myData.blue) {
+                    $(".onoffswitchblue-checkbox").click();
+                }
+                if (myData.yellow) {
+                    $(".onoffswitchyellow-checkbox").click();
+                }
+                if (myData.green) {
+                    $(".onoffswitchgreen-checkbox").click();
+                }
+                document.getElementById("fname").placeholder = "MORS"
+                await sleep(500);
                 var text = convert();
                 console.log(text);
-                for(var i=0;i<text.length;i++){
-                    if(text[i]==='-'){//Long Signal
+                for (var i = 0; i < text.length; i++) {
+                    if (text[i] === '-') {//Long Signal
                         $(".onoffswitchbred-checkbox").click();
                         await sleep(1000);
                         $(".onoffswitchbred-checkbox").click();
                     }
-                    else if(text[i]==='.'){//Short signal
+                    else if (text[i] === '.') {//Short signal
                         $(".onoffswitchbred-checkbox").click();
                         await sleep(500);
                         $(".onoffswitchbred-checkbox").click();
                     }
-                    else{   //Space
+                    else {   //Space
                         await sleep(1000);
                     }
                     await sleep(500);
@@ -433,6 +474,7 @@
         }
     </script>
 </head>
+
 <body>
     <div>
         <table align="center">
@@ -447,6 +489,7 @@
                         </label>
                     </div>
                 </td>
+                <td><div class="led-red-on"></div></td>
                 <td>
                     <button class="myButtonRandom">RASGELE</button>
                 </td>
@@ -462,6 +505,7 @@
                         </label>
                     </div>
                 </td>
+                <td><div class="led-green-on"></div></td>
                 <td>
                     <button class="animationButton">ANİMA</button>
                 </td>
@@ -477,6 +521,7 @@
                         </label>
                     </div>
                 </td>
+                <td><div class="led-yellow-on"></div></td>
                 <td>
                     <button class="invert">ÇEVİR</button>
                 </td>
@@ -493,6 +538,7 @@
                         </label>
                     </div>
                 </td>
+                <td><div class="led-blue-on"></div></td>
                 <td>
                     <button class="mors">MORS</button>
                 </td>
@@ -509,8 +555,15 @@
                         </label>
                     </div>
                 </td>
+                <td><div class="led-mock-on"></div></td>
                 <td><button class="alexa" id='btnGiveCommand'>KOMUT</button></td>
             </tr>
+            <!-- <tr>
+                <td><div class="led-red-on"></div>
+                <div class="led-green-on"></div></td>
+                <td><div class="led-yellow-on"></div>
+                <div class="led-blue-on"></div></td>
+            </tr> -->
         </table>
 
 
@@ -1113,7 +1166,7 @@
         margin: auto;
         position: relative;
     }
-    
+
 
     .mors:hover {
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
@@ -1148,14 +1201,14 @@
         font-family: Arial;
         font-size: 40px;
         font-weight: bold;
-        padding: 0px 105px 0px 105px;
+        padding: 0px 115px 0px 115px;
         text-decoration: none;
         text-shadow: 1px 2px 1px black;
         margin: auto;
         margin-top: 5px;
         position: relative;
     }
-    
+
 
     .submitButton:hover {
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #090357), color-stop(1, #090357));
@@ -1181,8 +1234,9 @@
     body {
         background-color: #eb830c;
     }
+
     input[type=text] {
-        width: 400px;
+        width: 419px;
         padding: 0px 0px;
         margin: 8px 0;
         display: block;
@@ -1195,66 +1249,94 @@
         text-align: center;
         font-weight: bold;
     }
-    $bulb_size: 50vh;
-$bulb_yellow:#ffff79;
-$bulb_side_yellow:#ffff00;
-$bulb_face: #657883;
-.bulb {
-    display: block;
-    color: black;
-    margin: 0 auto;
-    width: $bulb_size;    
-    height: $bulb_size;
-    background: #bbb;
-    border-radius:  40% 40% 2px 2px;
-    .eyes {
-        width: 100%;
-        * {
-            margin: 0.1*$bulb_size;
-            margin-top: 0.2*$bulb_size;
-            display: inline-block;
-            width: 0.1*$bulb_size;
-            height: 0.1*$bulb_size;
-            background-color: $bulb_face;
-            border-radius: 50%;
-        }
-    }
-    .mouth {
-        margin: 0 auto;
-        width: 0.2*$bulb_size;
-        height: 0.1*$bulb_size;
-        background: $bulb_face;
-        border: none;
-        border-radius: 0.6*$bulb_size 0.6*$bulb_size 0.2*$bulb_size 0.2*$bulb_size;
-        -moz-transition: all .51s;
-        -o-transition: all .51s;
-        -webkit-transition: all .51s;
-        transition: all .51s;
-    }
-}
-.bulb.light_up {
-    box-shadow: 0 -10px 100px $bulb_side_yellow;
-    background: $bulb_yellow;
-    .mouth {
-        background: $bulb_face;
-        border: none;
-        border-radius:0.2*$bulb_size  0.2*$bulb_size  0.6*$bulb_size 0.6*$bulb_size;
-        
-    }
-}
-#light {
-    margin: 0 auto;
-    width: 100px;
-    height:79px;
-    color: $sudo_green;
-    letter-spacing: 3px;
-}
-body{
-    text-align: center;
-}
 
+    .led-blue-on {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #4AF;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #06F 0 -1px 9px, #06F 0 2px 14px;
+    }
 
-    
+    .led-blue-off {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #006 0 -1px 9px, #006 0 2px 14px;
+    }
+
+    .led-green-on {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #6F0;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #6F0 0 -1px 9px, #6F0 0 2px 12px;
+    }
+
+    .led-green-off {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #060 0 -1px 9px, #060 0 2px 12px;
+    }
+
+    .led-red-on {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #F40;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #F00 0 -1px 9px, #F00 0 2px 12px;
+    }
+
+    .led-red-off {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #800 0 -1px 9px, #800 0 2px 12px;
+    }
+
+    .led-yellow-on {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #FF0;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #DD0 0 -1px 9px, #DD0 0 2px 12px;
+    }
+
+    .led-yellow-off {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #880 0 -1px 9px, #220 0 2px 12px;
+    }
+    .led-mock-off {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+        border-radius: 50%;
+        box-shadow: #000 0 -1px 7px 1px, inset #000 0 -1px 9px, #000 0 2px 12px;
+    }
+    .led-mock-on {
+        margin: 20px auto;
+        width: 12px;
+        height: 12px;
+        background-color: #FFF;
+        border-radius: 50%;
+        box-shadow: #888 0 -1px 7px 1px, inset #888 0 -1px 9px, #DDD 0 2px 12px;
+    }
 </style>
 
 </html>
