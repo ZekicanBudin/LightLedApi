@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var red, blue, green, yellow;
+        var red, blue, green, yellow, newText = "",textToChange = "";
         var request = new XMLHttpRequest();
         request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
         request.send(null);
@@ -351,11 +351,76 @@
                 else if(textValue.toLowerCase() === "voice" || textValue.toLowerCase() === "komut" || textValue.toLowerCase() === "ses" || textValue.toLowerCase() === "sesli komut"){
                     $(".alexa").click();
                 }
-                else if(textValue.toLowerCase() === "mors" || textValue.toLowerCase() === "mors alfabesi" || textValue.toLowerCase() === "mors alphabet" ){
-                    
+                else if(textValue.toLowerCase().substring(0,4)==="mors"){
+                    textToChange = "";
+                    textToChange = textValue.substr(5).toLowerCase();
+                    $(".mors").click();
+                }
+                else{
+                    document.getElementById("fname").placeholder = "Komut Bulunamadı"
                 }
             });
         });
+        $(document).ready(function () {
+            $('.mors').click( async function () {
+                textToChange = document.getElementById("fname").value;
+                document.getElementById("fname").value = "";
+                if (myData.red) {
+                        $(".onoffswitchbred-checkbox").click();
+                    }
+                    if (myData.blue) {
+                        $(".onoffswitchblue-checkbox").click();
+                    }
+                    if (myData.yellow) {
+                        $(".onoffswitchyellow-checkbox").click();
+                    }
+                    if (myData.green) {
+                        $(".onoffswitchgreen-checkbox").click();
+                    }
+                    document.getElementById("fname").placeholder = "MORS"
+                    await sleep(500);
+                var text = convert();
+                console.log(text);
+                for(var i=0;i<text.length;i++){
+                    if(text[i]==='-'){//Long Signal
+                        $(".onoffswitchbred-checkbox").click();
+                        await sleep(1000);
+                        $(".onoffswitchbred-checkbox").click();
+                    }
+                    else if(text[i]==='.'){//Short signal
+                        $(".onoffswitchbred-checkbox").click();
+                        await sleep(500);
+                        $(".onoffswitchbred-checkbox").click();
+                    }
+                    else{   //Space
+                        await sleep(1000);
+                    }
+                    await sleep(500);
+                }
+                newText = "";
+                textToChange = "";
+                text = "";
+                document.getElementById("fname").placeholder = "MORS-END"
+            });
+        });
+        function convert() {
+            var letters = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+            var morseLetters = [",", ".-", "-...", "-.-.", "-..", ".",
+                "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
+                "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-",
+                ".--", "-..-", "-.--", "--..", ".----", "..--", "...--",
+                "....-", ".....", "-....", "--...", "---..", "----.", "-----"];
+            for (var i = 0; i < textToChange.length; i++) {
+                for (var j = 0; j < 37; j++) {
+                    if (textToChange[i].toLowerCase() == letters[j]) {
+                        newText += morseLetters[j];
+                        newText += "";
+                        break;
+                    }
+                }
+            }
+            return newText;
+        }
     </script>
 </head>
 <body>
@@ -1120,6 +1185,47 @@
         text-align: center;
         font-weight: bold;
     }
+
+
+
+    .led-red {
+    margin: 20px auto;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: #000 0 -1px 7px 1px, inset #600 0 -1px 9px, #F00 0 2px 12px;
+}
+.led-red:off{
+  background-color: yellow;
+}
+
+.led-yellow {
+    margin: 20px auto;
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 230, 0);
+    border-radius: 50%;
+    box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
+}
+
+.led-blue-off {
+    margin: 20px auto;
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: #000 0 -1px 7px 1px, inset #460 0 -1px 9px, #7D0 0 2px 12px;
+}
+
+.led-blue-on {
+    margin: 20px auto;
+    width: 12px;
+    height: 12px;
+    background-color: #4AF;
+    border-radius: 50%;
+    box-shadow: #000 0 -1px 7px 1px, inset #006 0 -1px 9px, #06F 0 2px 14px;
+}
 </style>
 
 </html>
