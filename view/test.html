@@ -48,37 +48,33 @@
 </body>
 
 </html>
-$bulb_size: 50vh;
-$bulb_yellow:#ffff79;
-$bulb_side_yellow:#ffff00;
-$bulb_face: #657883;
 .bulb {
     display: block;
-    color: black;
     margin: 0 auto;
-    width: $bulb_size;    
-    height: $bulb_size;
+    width: 50vh;    
+    height: 50vh;
     background: #bbb;
     border-radius:  40% 40% 2px 2px;
     .eyes {
+      text-align:center;
         width: 100%;
         * {
-            margin: 0.1*$bulb_size;
-            margin-top: 0.2*$bulb_size;
+            margin: 0.1*50vh;
+            margin-top: 0.2*50vh;
             display: inline-block;
-            width: 0.1*$bulb_size;
-            height: 0.1*$bulb_size;
-            background-color: $bulb_face;
+            width: 0.1*50vh;
+            height: 0.1*50vh;
+            background-color: #657883;
             border-radius: 50%;
         }
     }
     .mouth {
         margin: 0 auto;
-        width: 0.2*$bulb_size;
-        height: 0.1*$bulb_size;
-        background: $bulb_face;
+        width: 0.2*50vh;
+        height: 0.1*50vh;
+        background: #657883;
         border: none;
-        border-radius: 0.6*$bulb_size 0.6*$bulb_size 0.2*$bulb_size 0.2*$bulb_size;
+        border-radius: 0.6*50vh 0.6*50vh 0.2*50vh 0.2*50vh;
         -moz-transition: all .51s;
         -o-transition: all .51s;
         -webkit-transition: all .51s;
@@ -86,12 +82,12 @@ $bulb_face: #657883;
     }
 }
 .bulb.light_up {
-    box-shadow: 0 -10px 100px $bulb_side_yellow;
-    background: $bulb_yellow;
+    box-shadow: 0 -10px 100px #ffff79;
+    background: #ffff79;
     .mouth {
-        background: $bulb_face;
+        background: #657883;
         border: none;
-        border-radius:0.2*$bulb_size  0.2*$bulb_size  0.6*$bulb_size 0.6*$bulb_size;
+        border-radius:0.2*50vh  0.2*50vh  0.6*50vh 0.6*50vh;
         
     }
 }
@@ -101,9 +97,7 @@ $bulb_face: #657883;
     height:79px;
     letter-spacing: 3px;
 }
-body{
-    text-align: center;
-}
+
 
 
 
