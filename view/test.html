@@ -6,8 +6,10 @@
     <p>Text in Morse Code: </p>
     <p id="newText"></p>
     <script>
+        var newText ="";
         function convert() {
-            var letters = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+            var letters = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
             var morseLetters = ["\xa0", ".-", "-...", "-.-.", "-..", ".",
                 "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
                 "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-",
@@ -15,7 +17,7 @@
                 "....-", ".....", "-....", "--...", "---..", "----.", "-----"];
 
             var textToChange = document.getElementById("textToConvert").value;
-            var newText = "";
+            //var newText = "";
             var newText2 = "";
             for (var i = 0; i < textToChange.length; i++) {
                 for (var j = 0; j < 37; j++) {
@@ -46,3 +48,71 @@
 </body>
 
 </html>
+$sudo_green:#50e2c2;
+$deep_blue:#23263a;
+$bulb_size: 50vh;
+$bulb_yellow:#ffff79;
+$bulb_side_yellow:#ffff00;
+$bulb_face: #657883;
+.bulb {
+    display: block;
+    color: black;
+    margin: 0 auto;
+    width: $bulb_size;    
+    height: $bulb_size;
+    background: #bbb;
+    border-radius:  40% 40% 2px 2px;
+    .eyes {
+        width: 100%;
+        * {
+            margin: 0.1*$bulb_size;
+            margin-top: 0.2*$bulb_size;
+            display: inline-block;
+            width: 0.1*$bulb_size;
+            height: 0.1*$bulb_size;
+            background-color: $bulb_face;
+            border-radius: 50%;
+        }
+    }
+    .mouth {
+        margin: 0 auto;
+        width: 0.2*$bulb_size;
+        height: 0.1*$bulb_size;
+        background: $bulb_face;
+        border: none;
+        border-radius: 0.6*$bulb_size 0.6*$bulb_size 0.2*$bulb_size 0.2*$bulb_size;
+        -moz-transition: all .51s;
+        -o-transition: all .51s;
+        -webkit-transition: all .51s;
+        transition: all .51s;
+    }
+}
+.bulb.light_up {
+    box-shadow: 0 -10px 100px $bulb_side_yellow;
+    background: $bulb_yellow;
+    .mouth {
+        background: $bulb_face;
+        border: none;
+        border-radius:0.2*$bulb_size  0.2*$bulb_size  0.6*$bulb_size 0.6*$bulb_size;
+        
+    }
+}
+#light {
+    margin: 0 auto;
+    width: 133px;
+  height:79px;
+    color: $sudo_green;
+    letter-spacing: 3px;
+}
+body{
+    text-align: center;
+}
+
+
+
+<div class="bulb" id="light">
+        <div class="eyes">
+            <span></span><span></span>
+        </div>
+        <div class="mouth"></div>
+    </div>
