@@ -9,6 +9,8 @@
     <script type="text/javascript">
 
         var red, blue, green, yellow, newText = "", textToChange = "";
+        var myText = {};
+        myText.value = "MERHABA";
         var request = new XMLHttpRequest();
         request.open('GET', 'https://lightledapi.herokuapp.com/led', false);
         request.send(null);
@@ -29,24 +31,36 @@
                     green = data[0].green;
                     yellow = data[0].yellow;
                     if (red && blue && green && yellow) {
-                        $(".onoffswitch-checkbox").attr('checked', true);   
+                        $(".onoffswitch-checkbox").attr('checked', true);
                     }
                     else {
                         $(".onoffswitch-checkbox").attr('checked', false);
                         document.getElementsByClassName("led-mock-on")[0].setAttribute("class", "led-mock-off");
                     }
-                    if(!red){
+                    if (!red) {
                         document.getElementsByClassName("led-red-on")[0].setAttribute("class", "led-red-off");
                     }
-                    if(!blue){
+                    if (!blue) {
                         document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
                     }
-                    if(!yellow){
+                    if (!yellow) {
                         document.getElementsByClassName("led-yellow-on")[0].setAttribute("class", "led-yellow-off");
                     }
-                    if(!green){
+                    if (!green) {
                         document.getElementsByClassName("led-green-on")[0].setAttribute("class", "led-green-off");
                     }
+                    $.ajax
+                        ({
+                            //type:Göndereceimiz metodu belirler
+                            type: "POST",
+                            //url :veri istenilen dosyanın adresi
+                            data: JSON.stringify(myText),
+                            contentType: 'application/json',
+                            url: 'https://lightledapi.herokuapp.com/text/update',
+                            success: function (data) {
+                                console.log(JSON.stringify(data))
+                            }
+                        })
                     document.getElementById("fname").placeholder = "MERHABA";
                 }
             });
@@ -77,10 +91,23 @@
                         //cors: true,
                     })
                 document.getElementById("fname").placeholder = "MAVİ";
-                if(myData.blue){
-                        document.getElementsByClassName("led-blue-off")[0].setAttribute("class", "led-blue-on");
+                myText.value = "MAVI";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+                if (myData.blue) {
+                    document.getElementsByClassName("led-blue-off")[0].setAttribute("class", "led-blue-on");
                 }
-                else{
+                else {
                     document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
                 }
             });
@@ -101,11 +128,24 @@
                             console.log(JSON.stringify(data))
                         }
                     })
+                myText.value = "KIRMIZI";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "KIRMIZI";
-                if(myData.red){
-                        document.getElementsByClassName("led-red-off")[0].setAttribute("class", "led-red-on");
+                if (myData.red) {
+                    document.getElementsByClassName("led-red-off")[0].setAttribute("class", "led-red-on");
                 }
-                else{
+                else {
                     document.getElementsByClassName("led-red-on")[0].setAttribute("class", "led-red-off");
                 }
             });
@@ -126,11 +166,24 @@
                             console.log(JSON.stringify(data))
                         }
                     })
+                myText.value = "YESIL";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "YEŞİL";
-                if(myData.green){
-                        document.getElementsByClassName("led-green-off")[0].setAttribute("class", "led-green-on");
+                if (myData.green) {
+                    document.getElementsByClassName("led-green-off")[0].setAttribute("class", "led-green-on");
                 }
-                else{
+                else {
                     document.getElementsByClassName("led-green-on")[0].setAttribute("class", "led-green-off");
                 }
             });
@@ -151,11 +204,24 @@
                             console.log(JSON.stringify(data))
                         }
                     })
+                myText.value = "SARI";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "SARI";
-                if(myData.yellow){
-                        document.getElementsByClassName("led-yellow-off")[0].setAttribute("class", "led-yellow-on");
+                if (myData.yellow) {
+                    document.getElementsByClassName("led-yellow-off")[0].setAttribute("class", "led-yellow-on");
                 }
-                else{
+                else {
                     document.getElementsByClassName("led-yellow-on")[0].setAttribute("class", "led-yellow-off");
                 }
             });
@@ -175,6 +241,19 @@
                 else {
                     $(".onoffswitchblue-checkbox").click();
                 }
+                myText.value = "RASGELE";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "RASGELE";
             });
         });
@@ -226,11 +305,24 @@
                         $(".onoffswitchgreen-checkbox").click();
                     }
                 }
+                myText.value = "HEPSI";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "HEPSİ";
-                if(x){
+                if (x) {
                     document.getElementsByClassName("led-mock-off")[0].setAttribute("class", "led-mock-on");
                 }
-                else{
+                else {
                     document.getElementsByClassName("led-mock-on")[0].setAttribute("class", "led-mock-off");
                 }
             });
@@ -241,6 +333,19 @@
                 $(".onoffswitchyellow-checkbox").click();
                 $(".onoffswitchblue-checkbox").click();
                 $(".onoffswitchgreen-checkbox").click();
+                myText.value = "CEVIR";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "ÇEVİR";
             });
         });
@@ -260,18 +365,44 @@
                     await sleep(150);
                 }
                 */
+                myText.value = "ANIMA";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "ANİMA";
                 await sleep(500);
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < 6; i++) {
                     $(".onoffswitchbred-checkbox").click();
-                    await sleep(150);
+                    await sleep(250);
                     $(".onoffswitchyellow-checkbox").click();
-                    await sleep(150);
+                    await sleep(250);
                     $(".onoffswitchgreen-checkbox").click();
-                    await sleep(150);
+                    await sleep(250);
                     $(".onoffswitchblue-checkbox").click();
-                    await sleep(150);
+                    await sleep(250);
                 }
+                myText.value = "ANIMA";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "ANIMA";
                 /*
                 for (i = 0; i < 5; i++) {
@@ -316,6 +447,19 @@
                 //recognition.lang = 'en-US';
                 recognition.lang = 'tr-TR';
                 recognition.interimResults = false;
+                myText.value = "KOMUT";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "KOMUT";
                 recognition.onresult = function (event) {
                     var last = event.results.length - 1;
@@ -343,6 +487,19 @@
                         $('.invert').click();
                     }
                     else if (command.toLowerCase() === 'select mors' || command.toLowerCase() === 'mors' || command.toLowerCase() === 'mors alfabesi') {
+                        myText.value = "MORS";
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myText),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/text/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                         document.getElementById("fname").placeholder = "MORS";
                     }
                     else if (command.toLowerCase() === 'select anima' || command.toLowerCase() === 'animation' || command.toLowerCase() === 'anima' || command.toLowerCase() === 'select animation' || command.toLowerCase() === 'animasyon' || command.toLowerCase() === 'gösteri' || command.toLowerCase() === 'show' || command.toLowerCase() === 'gösterim') {
@@ -354,6 +511,19 @@
                     //document.getElementById("fname").placeholder = message.textContent.substring(1, message.textContent.length-1);
                 };
                 recognition.onerror = function (event) {
+                    myText.value = "HATA!";
+                    $.ajax
+                        ({
+                            //type:Göndereceimiz metodu belirler
+                            type: "POST",
+                            //url :veri istenilen dosyanın adresi
+                            data: JSON.stringify(myText),
+                            contentType: 'application/json',
+                            url: 'https://lightledapi.herokuapp.com/text/update',
+                            success: function (data) {
+                                console.log(JSON.stringify(data))
+                            }
+                        })
                     document.getElementById("fname").placeholder = "HATA!";
                     //message.textContent = 'Error occurred in recognition: ' + event.error;
                 }
@@ -364,6 +534,19 @@
         $(document).ready(function () {
             $('.submitButton').click(function () {
                 var textValue = document.getElementById("fname").value;
+                myText.value = "";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 if (textValue === "KIRMIZI" || textValue === "Kırmızı" || textValue === "kırmızı" || textValue === "Kirmizi" || textValue.toLowerCase() === "red" || textValue === "KİRMİZİ" || textValue === "kirmizi") {
                     document.getElementById("fname").value = "";
                     $(".onoffswitchbred-checkbox").click();
@@ -404,6 +587,19 @@
                 }
                 else {
                     document.getElementById("fname").value = "";
+                    myText.value = "KOMUT BULUNAMADI";
+                    $.ajax
+                        ({
+                            //type:Göndereceimiz metodu belirler
+                            type: "POST",
+                            //url :veri istenilen dosyanın adresi
+                            data: JSON.stringify(myText),
+                            contentType: 'application/json',
+                            url: 'https://lightledapi.herokuapp.com/text/update',
+                            success: function (data) {
+                                console.log(JSON.stringify(data))
+                            }
+                        })
                     document.getElementById("fname").placeholder = "Komut Bulunamadı"
                 }
 
@@ -429,6 +625,19 @@
                     $(".onoffswitchgreen-checkbox").click();
                 }
                 document.getElementById("fname").placeholder = "MORS"
+                myText.value = "MORS";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 await sleep(500);
                 var text = convert();
                 console.log(text);
@@ -451,6 +660,19 @@
                 newText = "";
                 textToChange = "";
                 text = "";
+                myText.value = "MORS-END";
+                $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myText),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
                 document.getElementById("fname").placeholder = "MORS-END"
             });
         });
@@ -489,7 +711,9 @@
                         </label>
                     </div>
                 </td>
-                <td><div class="led-red-on"></div></td>
+                <td>
+                    <div class="led-red-on"></div>
+                </td>
                 <td>
                     <button class="myButtonRandom">RASGELE</button>
                 </td>
@@ -505,7 +729,9 @@
                         </label>
                     </div>
                 </td>
-                <td><div class="led-green-on"></div></td>
+                <td>
+                    <div class="led-green-on"></div>
+                </td>
                 <td>
                     <button class="animationButton">ANİMA</button>
                 </td>
@@ -521,7 +747,9 @@
                         </label>
                     </div>
                 </td>
-                <td><div class="led-yellow-on"></div></td>
+                <td>
+                    <div class="led-yellow-on"></div>
+                </td>
                 <td>
                     <button class="invert">ÇEVİR</button>
                 </td>
@@ -538,7 +766,9 @@
                         </label>
                     </div>
                 </td>
-                <td><div class="led-blue-on"></div></td>
+                <td>
+                    <div class="led-blue-on"></div>
+                </td>
                 <td>
                     <button class="mors">MORS</button>
                 </td>
@@ -555,7 +785,9 @@
                         </label>
                     </div>
                 </td>
-                <td><div class="led-mock-on"></div></td>
+                <td>
+                    <div class="led-mock-on"></div>
+                </td>
                 <td><button class="alexa" id='btnGiveCommand'>KOMUT</button></td>
             </tr>
             <!-- <tr>
@@ -999,11 +1231,13 @@
         font-family: Arial;
         font-size: 36px;
         font-weight: bold;
-        padding: 16.5px 11px 16.5px 11px;
+        /* padding: 16.5px 11px 16.5px 11px; */
         text-decoration: none;
         text-shadow: 0px 1px 0px black;
         margin: auto;
         position: relative;
+        width:200px;
+        height:79px;
     }
 
     .myButtonRandom:hover {
@@ -1044,6 +1278,8 @@
         text-shadow: 0px 1px 0px white;
         margin: auto;
         position: relative;
+        width:200px;
+        height:79px;
     }
 
     .animationButton:hover {
@@ -1084,6 +1320,8 @@
         text-shadow: 0px 1px 0px white;
         margin: auto;
         position: relative;
+        width:200px;
+        height:79px;
     }
 
     .invert:hover {
@@ -1124,6 +1362,8 @@
         text-shadow: 1px 2px 1px black;
         margin: auto;
         position: relative;
+        width:200px;
+        height:79px;
     }
 
     .alexa:hover {
@@ -1165,6 +1405,8 @@
         text-shadow: 1px 2px 1px black;
         margin: auto;
         position: relative;
+        width:200px;
+        height:79px;
     }
 
 
@@ -1207,6 +1449,8 @@
         margin: auto;
         margin-top: 5px;
         position: relative;
+        width:420px;
+        height:60px;
     }
 
 
@@ -1248,6 +1492,8 @@
         font-size: 38px;
         text-align: center;
         font-weight: bold;
+        width:420px;
+        height:60px;
     }
 
     .led-blue-on {
@@ -1321,6 +1567,7 @@
         border-radius: 50%;
         box-shadow: #000 0 -1px 7px 1px, inset #880 0 -1px 9px, #220 0 2px 12px;
     }
+
     .led-mock-off {
         margin: 20px auto;
         width: 12px;
@@ -1329,6 +1576,7 @@
         border-radius: 50%;
         box-shadow: #000 0 -1px 7px 1px, inset #000 0 -1px 9px, #000 0 2px 12px;
     }
+
     .led-mock-on {
         margin: 20px auto;
         width: 12px;

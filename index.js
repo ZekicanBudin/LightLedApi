@@ -27,20 +27,20 @@ app.use((req,res, next) => {
 app.use(ledRoute)
 app.use(express.static('view'))
 
-//Handler for 404
-app.use((err,req,res,next) => {
-    console.error(err.stack)
-    res.sendFile(path.join(__dirname, './view/404.html'))
-})
-//Handler for 500
-app.use((err,req,res,next) => {
-    console.error(err.stack)
-    res.sendFile(path.join(__dirname, './view/500.html'))
-})
 app.post('/led/update', jsonParser, function (req, res) {
     console.log(req.body);
     console.log('Send button clicked');
   })
+
+// //Handler for 500
+app.use((err,req,res,next) => {
+  console.error(err.stack)
+  res.sendFile(__dirname + '/view/500.html')
+})
+//404 Handler
+app.get("*", function(req,res){
+res.sendFile(__dirname + '/view/404.html');
+})
 
 const PORT = process.env.PORT || 2019
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`))

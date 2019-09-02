@@ -4,6 +4,7 @@ let router = express.Router()
 let Text = require('../model/text.model')
 /*****************************************************************/
 //Getting all
+
 router.get('/led', async (req,res) => {
     //res.send('Hello World')
     try {
@@ -116,17 +117,17 @@ router.post('/text/update',getText, async (req,res) => {
     }
 })
 
-router.post('/text/create', async (req,res) => {
-    const text = new Text({
-        value : req.body.value
-    })
-    try {
-        const newText = await text.save()
-        res.status(201).json(newText)
-    }catch(err){
-        res.status(400).json({message: err.message})
-    }
-})
+// router.post('/text/create', async (req,res) => {
+//     const text = new Text({
+//         value : req.body.value
+//     })
+//     try {
+//         const newText = await text.save()
+//         res.status(201).json(newText)
+//     }catch(err){
+//         res.status(400).json({message: err.message})
+//     }
+// })
 router.get('/text', async (req,res) => {
     //res.send('Hello World')
     try {
