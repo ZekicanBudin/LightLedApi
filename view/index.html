@@ -63,7 +63,7 @@
                                 console.log(JSON.stringify(data))
                             }
                         })
-                        print("MERHABA");
+                    print("MERHABA");
                     //document.getElementById("fname").placeholder = "MERHABA";
                 }
             });
@@ -109,17 +109,17 @@
                         }
                     })
                 if (myData.blue) {
-                    middleLed("blue",true);
+                    middleLed("blue", true);
                     //document.getElementsByClassName("led-blue-off")[0].setAttribute("class", "led-blue-on");
                 }
                 else {
-                    middleLed("blue",false);
+                    middleLed("blue", false);
                     //document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
-                    }
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
+                }
             });
         });
         $(document).ready(function () {
@@ -153,15 +153,15 @@
                     })
                 print("KIRMIZI");
                 if (myData.red) {
-                    middleLed("red",true);
+                    middleLed("red", true);
                 }
                 else {
-                    middleLed("red",false);
+                    middleLed("red", false);
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
-                    }
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
+                }
             });
         });
 
@@ -196,15 +196,15 @@
                     })
                 print("YEŞİL");
                 if (myData.green) {
-                    middleLed("green",true);
+                    middleLed("green", true);
                 }
                 else {
-                    middleLed("green",false);
+                    middleLed("green", false);
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
-                    }
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
+                }
             });
         });
         $(document).ready(function () {
@@ -238,15 +238,15 @@
                     })
                 print("SARI");
                 if (myData.yellow) {
-                    middleLed("yellow",true);
+                    middleLed("yellow", true);
                 }
                 else {
-                    middleLed("yellow",false);
+                    middleLed("yellow", false);
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
-                    }
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
+                }
             });
         });
 
@@ -259,40 +259,40 @@
                     myData.blue = !myData.blue;
                     myData.green = !myData.green;
                     myData.yellow = !myData.yellow;
-                    if(x){
-                        ledButtons("red",true);
-                        ledButtons("green",true);
-                        ledButtons("yellow",true);
-                        ledButtons("blue",true);
-                        middleLed("red",true);
-                        middleLed("green",true);
-                        middleLed("yellow",true);
-                        middleLed("blue",true);
-                        
-                    }else{
-                        ledButtons("red",false);
-                        ledButtons("green",false);
-                        ledButtons("yellow",false);
-                        ledButtons("blue",false);
-                        middleLed("red",false);
-                        middleLed("green",false);
-                        middleLed("yellow",false);
-                        middleLed("blue",false);
+                    if (x) {
+                        ledButtons("red", true);
+                        ledButtons("green", true);
+                        ledButtons("yellow", true);
+                        ledButtons("blue", true);
+                        middleLed("red", true);
+                        middleLed("green", true);
+                        middleLed("yellow", true);
+                        middleLed("blue", true);
+
+                    } else {
+                        ledButtons("red", false);
+                        ledButtons("green", false);
+                        ledButtons("yellow", false);
+                        ledButtons("blue", false);
+                        middleLed("red", false);
+                        middleLed("green", false);
+                        middleLed("yellow", false);
+                        middleLed("blue", false);
                     }
                 }
-                else if ((myData.red && myData.blue && myData.green && myData.yellow && x) || (!myData.red && !myData.blue && !myData.green && !myData.yellow && !x)){
+                else if ((myData.red && myData.blue && myData.green && myData.yellow && x) || (!myData.red && !myData.blue && !myData.green && !myData.yellow && !x)) {
                 }
                 else if (!x) {
-                    if (myData.red) {myData.red = !myData.red; ledButtons("red",false);middleLed("red",false);}
-                    if (myData.blue) {myData.blue = !myData.blue; ledButtons("blue",false);middleLed("blue",false);}
-                    if (myData.yellow) {myData.yellow = !myData.yellow; ledButtons("yellow",false);middleLed("yellow",false);}
-                    if (myData.green) {myData.green = !myData.green; ledButtons("green",false);middleLed("green",false);}
+                    if (myData.red) { myData.red = !myData.red; ledButtons("red", false); middleLed("red", false); }
+                    if (myData.blue) { myData.blue = !myData.blue; ledButtons("blue", false); middleLed("blue", false); }
+                    if (myData.yellow) { myData.yellow = !myData.yellow; ledButtons("yellow", false); middleLed("yellow", false); }
+                    if (myData.green) { myData.green = !myData.green; ledButtons("green", false); middleLed("green", false); }
                 }
                 else {
-                    if (!myData.red) {myData.red = !myData.red;ledButtons("red",true);middleLed("red",true);}
-                    if (!myData.blue) {myData.blue = !myData.blue;ledButtons("blue",true);middleLed("blue",true);}
-                    if (!myData.yellow) {myData.yellow = !myData.yellow;ledButtons("yellow",true);middleLed("yellow",true);}
-                    if (!myData.green) {myData.green = !myData.green;ledButtons("green",true);middleLed("green",true);}
+                    if (!myData.red) { myData.red = !myData.red; ledButtons("red", true); middleLed("red", true); }
+                    if (!myData.blue) { myData.blue = !myData.blue; ledButtons("blue", true); middleLed("blue", true); }
+                    if (!myData.yellow) { myData.yellow = !myData.yellow; ledButtons("yellow", true); middleLed("yellow", true); }
+                    if (!myData.green) { myData.green = !myData.green; ledButtons("green", true); middleLed("green", true); }
                 }
                 myText.value = "HEPSI";
                 $.ajax
@@ -307,7 +307,7 @@
                             console.log(JSON.stringify(data))
                         }
                     })
-                    $.ajax
+                $.ajax
                     ({
                         //type:Göndereceimiz metodu belirler
                         type: "POST",
@@ -321,10 +321,10 @@
                     })
                 print("HEPSI");
                 if (x) {
-                    middleLed("mock",true);
+                    middleLed("mock", true);
                 }
                 else {
-                    middleLed("mock",false);
+                    middleLed("mock", false);
                 }
             });
         });
@@ -345,9 +345,9 @@
                     $(".onoffswitchblue-checkbox").click();
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
-                    }
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
+                }
                 myText.value = "RASTGELE";
                 $.ajax
                     ({
@@ -364,24 +364,24 @@
                 print("RASTGELE");
             });
         });
-        
+
         $(document).ready(function () {
             $('.invert').click(function () {
                 myData.red = !myData.red;
                 myData.blue = !myData.blue;
                 myData.yellow = !myData.yellow;
                 myData.green = !myData.green;
-                middleLed("red",myData.red);
-                middleLed("green",myData.green);
-                middleLed("blue",myData.blue);
-                middleLed("yellow",myData.yellow);
-                ledButtons("red",myData.red);
-                ledButtons("green",myData.green);
-                ledButtons("blue",myData.blue);
-                ledButtons("yellow",myData.yellow);
+                middleLed("red", myData.red);
+                middleLed("green", myData.green);
+                middleLed("blue", myData.blue);
+                middleLed("yellow", myData.yellow);
+                ledButtons("red", myData.red);
+                ledButtons("green", myData.green);
+                ledButtons("blue", myData.blue);
+                ledButtons("yellow", myData.yellow);
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
+                    middleLed("mock", myData.red);
+                    ledButtons("mock", myData.red);
                 }
                 myText.value = "CEVIR";
                 $.ajax
@@ -396,7 +396,7 @@
                             console.log(JSON.stringify(data))
                         }
                     })
-                    $.ajax
+                $.ajax
                     ({
                         type: "POST",
                         data: JSON.stringify(myData),
@@ -406,7 +406,7 @@
                             console.log(JSON.stringify(data))
                         }
                     })
-                    print("ÇEVİR");
+                print("ÇEVİR");
             });
         });
 
@@ -449,8 +449,8 @@
                     await sleep(300);
                     $(".onoffswitchblue-checkbox").click();
                     if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
-                    middleLed("mock",myData.red);
-                    ledButtons("mock",myData.red);
+                        middleLed("mock", myData.red);
+                        ledButtons("mock", myData.red);
                     }
                     await sleep(300);
                 }
@@ -468,7 +468,7 @@
                         }
                     })
                 print("ANIMA");
-                
+
                 /*
                 for (i = 0; i < 5; i++) {
                     $(".onoffswitchbred-checkbox").click();
@@ -597,6 +597,14 @@
         });
         /**********************************************************************/
         $(document).ready(function () {
+            $('input[type=text]').keyup(function (e) {
+                if(e.key==="Enter"){
+                    document.getElementById("sbmtBtn").click();
+                }
+            });
+        });
+        /**********************************************************************/
+        $(document).ready(function () {
             $('.submitButton').click(function () {
                 var textValue = document.getElementById("fname").value;
                 if (textValue === "KIRMIZI" || textValue === "Kırmızı" || textValue === "kırmızı" || textValue === "Kirmizi" || textValue.toLowerCase() === "red" || textValue === "KİRMİZİ" || textValue === "kirmizi") {
@@ -666,26 +674,26 @@
                 document.getElementById("fname").value = "";
                 if (myData.red) {
                     myData.red = !myData.red;
-                    ledButtons("red",myData.red);
-                    middleLed("red",myData.red);
+                    ledButtons("red", myData.red);
+                    middleLed("red", myData.red);
                 }
                 if (myData.blue) {
                     myData.blue = !myData.blue;
-                    ledButtons("blue",myData.blue);
-                    middleLed("blue",myData.blue);
+                    ledButtons("blue", myData.blue);
+                    middleLed("blue", myData.blue);
                 }
                 if (myData.yellow) {
                     myData.yellow = !myData.yellow;
-                    ledButtons("yellow",myData.yellow);
-                    middleLed("yellow",myData.yellow);
+                    ledButtons("yellow", myData.yellow);
+                    middleLed("yellow", myData.yellow);
                 }
                 if (myData.green) {
                     myData.green = !myData.green;
-                    ledButtons("green",myData.green);
-                    middleLed("green",myData.green);
+                    ledButtons("green", myData.green);
+                    middleLed("green", myData.green);
                 }
-                ledButtons("mock",false);
-                middleLed("mock",false);
+                ledButtons("mock", false);
+                middleLed("mock", false);
                 print("MORS");
                 myText.value = "MORS";
                 $.ajax
@@ -768,73 +776,73 @@
             }
             return newText;
         }
-        function print(str){
+        function print(str) {
             document.getElementById("fname").placeholder = str;
         }
-        function middleLed(color,check){
-            if(color.toLowerCase()=="red"){
+        function middleLed(color, check) {
+            if (color.toLowerCase() == "red") {
                 if (check) {
-                    if(document.getElementsByClassName("led-red-off")[0]){
+                    if (document.getElementsByClassName("led-red-off")[0]) {
                         document.getElementsByClassName("led-red-off")[0].setAttribute("class", "led-red-on");
                     }
                 }
                 else {
-                    if(document.getElementsByClassName("led-red-on")[0]){
+                    if (document.getElementsByClassName("led-red-on")[0]) {
                         document.getElementsByClassName("led-red-on")[0].setAttribute("class", "led-red-off");
                     }
                 }
             }
-            else if(color.toLowerCase()=="green"){
+            else if (color.toLowerCase() == "green") {
                 if (check) {
-                    if(document.getElementsByClassName("led-green-off")[0]){
+                    if (document.getElementsByClassName("led-green-off")[0]) {
                         document.getElementsByClassName("led-green-off")[0].setAttribute("class", "led-green-on");
                     }
                 }
                 else {
-                    if(document.getElementsByClassName("led-green-on")[0]){
+                    if (document.getElementsByClassName("led-green-on")[0]) {
                         document.getElementsByClassName("led-green-on")[0].setAttribute("class", "led-green-off");
                     }
                 }
             }
-            else if(color.toLowerCase()=="blue"){
+            else if (color.toLowerCase() == "blue") {
                 if (check) {
-                    if(document.getElementsByClassName("led-blue-off")[0]){
+                    if (document.getElementsByClassName("led-blue-off")[0]) {
                         document.getElementsByClassName("led-blue-off")[0].setAttribute("class", "led-blue-on");
                     }
                 }
                 else {
-                    if(document.getElementsByClassName("led-blue-on")[0]){
+                    if (document.getElementsByClassName("led-blue-on")[0]) {
                         document.getElementsByClassName("led-blue-on")[0].setAttribute("class", "led-blue-off");
                     }
                 }
             }
-            else if(color.toLowerCase() == "yellow"){
+            else if (color.toLowerCase() == "yellow") {
                 if (check) {
-                    if(document.getElementsByClassName("led-yellow-off")[0]){
+                    if (document.getElementsByClassName("led-yellow-off")[0]) {
                         document.getElementsByClassName("led-yellow-off")[0].setAttribute("class", "led-yellow-on");
                     }
                 }
                 else {
-                    if(document.getElementsByClassName("led-yellow-on")[0]){
+                    if (document.getElementsByClassName("led-yellow-on")[0]) {
                         document.getElementsByClassName("led-yellow-on")[0].setAttribute("class", "led-yellow-off");
                     }
                 }
             }
-            else{
+            else {
                 if (check) {
-                    if(document.getElementsByClassName("led-mock-off")[0]){
+                    if (document.getElementsByClassName("led-mock-off")[0]) {
                         document.getElementsByClassName("led-mock-off")[0].setAttribute("class", "led-mock-on");
                     }
                 }
                 else {
-                    if(document.getElementsByClassName("led-mock-on")[0]){
+                    if (document.getElementsByClassName("led-mock-on")[0]) {
                         document.getElementsByClassName("led-mock-on")[0].setAttribute("class", "led-mock-off");
                     }
                 }
             }
         }
-        function ledButtons(color,check){
-            if(color.toLowerCase()=="red"){
+        function ledButtons(color, check) {
+            if (color.toLowerCase() == "red") {
                 if (check) {
                     document.querySelector('#myonoffswitchbred').checked = true;
                 }
@@ -842,7 +850,7 @@
                     document.querySelector('#myonoffswitchbred').checked = false;
                 }
             }
-            else if(color.toLowerCase()=="green"){
+            else if (color.toLowerCase() == "green") {
                 if (check) {
                     document.querySelector('#myonoffswitchgreen').checked = true;
                 }
@@ -850,7 +858,7 @@
                     document.querySelector('#myonoffswitchgreen').checked = false;
                 }
             }
-            else if(color.toLowerCase()=="blue"){
+            else if (color.toLowerCase() == "blue") {
                 if (check) {
                     document.querySelector('#myonoffswitchblue').checked = true;
                 }
@@ -858,7 +866,7 @@
                     document.querySelector('#myonoffswitchblue').checked = false;
                 }
             }
-            else if(color.toLowerCase() == "yellow"){
+            else if (color.toLowerCase() == "yellow") {
                 if (check) {
                     document.querySelector('#myonoffswitchyellow').checked = true;
                 }
@@ -866,7 +874,7 @@
                     document.querySelector('#myonoffswitchyellow').checked = false;
                 }
             }
-            else{
+            else {
                 if (check) {
                     document.querySelector('#myonoffswitch').checked = true;
                 }
@@ -874,7 +882,7 @@
                     document.querySelector('#myonoffswitch').checked = false;
                 }
             }
-            
+
         }
     </script>
 </head>
@@ -1418,8 +1426,8 @@
         text-shadow: 0px 1px 0px black;
         margin: auto;
         position: relative;
-        width:200px;
-        height:79px;
+        width: 200px;
+        height: 79px;
     }
 
     .myButtonRandom:hover {
@@ -1460,8 +1468,8 @@
         text-shadow: 0px 1px 0px white;
         margin: auto;
         position: relative;
-        width:200px;
-        height:79px;
+        width: 200px;
+        height: 79px;
     }
 
     .animationButton:hover {
@@ -1502,8 +1510,8 @@
         text-shadow: 0px 1px 0px white;
         margin: auto;
         position: relative;
-        width:200px;
-        height:79px;
+        width: 200px;
+        height: 79px;
     }
 
     .invert:hover {
@@ -1544,8 +1552,8 @@
         text-shadow: 1px 2px 1px black;
         margin: auto;
         position: relative;
-        width:200px;
-        height:79px;
+        width: 200px;
+        height: 79px;
     }
 
     .alexa:hover {
@@ -1587,8 +1595,8 @@
         text-shadow: 1px 2px 1px black;
         margin: auto;
         position: relative;
-        width:200px;
-        height:79px;
+        width: 200px;
+        height: 79px;
     }
 
 
@@ -1631,8 +1639,8 @@
         margin: auto;
         margin-top: 5px;
         position: relative;
-        width:420px;
-        height:60px;
+        width: 420px;
+        height: 60px;
     }
 
 
@@ -1674,7 +1682,7 @@
         font-size: 38px;
         text-align: center;
         font-weight: bold;
-        height:60px;
+        height: 60px;
     }
 
     .led-blue-on {
