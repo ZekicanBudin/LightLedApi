@@ -8,15 +8,14 @@ const Lcd = require('lcd');
 const lcd = new Lcd({ rs: 25, e: 24, data: [23, 17, 18, 22], cols: 16, rows: 2 });
 setInterval(checkApi, 100)
 setInterval(checkText, 100)
-var count = 0, i = 1, j,theText = "MERHABA";
+var count = 0, i = 1, j,theText = "ACILIYOR!";
 
 process.on('SIGINT', () => {
     lcd.clear();
-    lcd.close();
     end();
     process.exit();
 });
-printOnLcd(theText);
+delay(3000);
 /*
 lcd.on('ready', () => {
   setInterval(() => {
