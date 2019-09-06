@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "http": "0.0.0",
     "mongoose": "^5.6.10",
+    "serialport": "^7.1.5",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
