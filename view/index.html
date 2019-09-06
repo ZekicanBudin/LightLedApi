@@ -552,8 +552,8 @@
                         $('.invert').click();
                     }
                     else if (command.toLowerCase() === 'select mors' || command.toLowerCase() === 'mors' || command.toLowerCase() === 'mors alfabesi' || command.toLowerCase() === 'kodla' ||
-                     command.toLowerCase().substr(0,(command.indexOf(" ")+1)?command.indexOf(" "):command.toLowerCase().end) === 'mors'||
-                     command.toLowerCase().substr(0,(command.indexOf(" ")+1)?command.indexOf(" "):command.toLowerCase().end) === 'kodla') {
+                        command.toLowerCase().substr(0, (command.indexOf(" ") + 1) ? command.indexOf(" ") : command.toLowerCase().end) === 'mors' ||
+                        command.toLowerCase().substr(0, (command.indexOf(" ") + 1) ? command.indexOf(" ") : command.toLowerCase().end) === 'kodla') {
                         myText.value = "MORS";
                         $.ajax
                             ({
@@ -567,41 +567,41 @@
                                     console.log(JSON.stringify(data))
                                 }
                             })
-                            if(command.indexOf(" ")+1){
-                                document.getElementById("fname").value = command.toLowerCase().split(" ")[1];
-                            }
-                            else{
-                                document.getElementById("fname").value = "";
-                            }
-                            $(".mors").click();
+                        if (command.indexOf(" ") + 1) {
+                            document.getElementById("fname").value = command.toLowerCase().split(" ")[1];
+                        }
+                        else {
+                            document.getElementById("fname").value = "";
+                        }
+                        $(".mors").click();
                         print("MORS");
                     }
                     else if (command.toLowerCase() === 'select anima' || command.toLowerCase() === 'animation' || command.toLowerCase() === 'anima' || command.toLowerCase() === 'select animation' || command.toLowerCase() === 'animasyon' || command.toLowerCase() === 'gösteri' || command.toLowerCase() === 'show' || command.toLowerCase() === 'gösterim') {
                         $('.animationButton').click();
                     }
-                    else{
+                    else {
                         var z = command.toUpperCase().indexOf(" ");
                         var toBePrinted;
-                        if(z == -1){
+                        if (z == -1) {
                             toBePrinted = command.toUpperCase();
                         }
-                        else{
+                        else {
                             toBePrinted = command.substr(0, z).toUpperCase();
                         }
                         print(toBePrinted);
                         myText.value = toBePrinted;
                         $.ajax
-                        ({
-                            //type:Göndereceimiz metodu belirler
-                            type: "POST",
-                            //url :veri istenilen dosyanın adresi
-                            data: JSON.stringify(myText),
-                            contentType: 'application/json',
-                            url: 'https://lightledapi.herokuapp.com/text/update',
-                            success: function (data) {
-                                console.log(JSON.stringify(data))
-                            }
-                        })
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myText),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/text/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                     }
                 };
                 recognition.onspeechend = function () {
@@ -631,7 +631,7 @@
         /**********************************************************************/
         $(document).ready(function () {
             $('input[type=text]').keyup(function (e) {
-                if(e.key==="Enter"){
+                if (e.key === "Enter") {
                     document.getElementById("sbmtBtn").click();
                 }
             });
@@ -704,7 +704,7 @@
                 if (textToChange.toLowerCase().substring(0, 4) === "mors") {
                     textToChange = textToChange.substr(5).toLowerCase();
                 }
-                else if(textToChange.toLowerCase().substring(0, 5) === "kodla"){
+                else if (textToChange.toLowerCase().substring(0, 5) === "kodla") {
                     textToChange = textToChange.substr(6).toLowerCase();
                 }
                 document.getElementById("fname").value = "";
@@ -778,28 +778,119 @@
                         myData.red = !myData.red;
                         ledButtons("red", myData.red);
                         middleLed("red", myData.red);
+                        print("UZUN-"+textToChange.toUpperCase())
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myData),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/led/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
+                            myText.value = "UZUN-"+textToChange.toUpperCase();
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myText),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/text/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                         //$(".onoffswitchbred-checkbox").click();
-                        await sleep(1000);
+                        await sleep(2000);
                         myData.red = !myData.red;
                         ledButtons("red", myData.red);
                         middleLed("red", myData.red);
+                        
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myData),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/led/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                         //$(".onoffswitchbred-checkbox").click();
                     }
                     else if (text[i] === '.') {//Short signal
-                        myData.red = !myData.red;
-                        ledButtons("red", myData.red);
-                        middleLed("red", myData.red);
+                        myData.green = !myData.green;
+                        ledButtons("green", myData.green);
+                        middleLed("green", myData.green);
+                        print("KISA-"+textToChange.toUpperCase())
+                        myText.value = "KISA-"+textToChange.toUpperCase();
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myText),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/text/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myData),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/led/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                         //$(".onoffswitchbred-checkbox").click();
-                        await sleep(500);
-                        myData.red = !myData.red;
-                        ledButtons("red", myData.red);
-                        middleLed("red", myData.red);
+                        await sleep(750);
+                        myData.green = !myData.green;
+                        ledButtons("green", myData.green);
+                        middleLed("green", myData.green);
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myData),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/led/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                         //$(".onoffswitchbred-checkbox").click();
                     }
                     else {   //Space
-                        await sleep(1000);
+                        await sleep(2000);
+                        print("BOSLUK"+textToChange.toUpperCase())
+                        myText.value = "BOSLUK"+textToChange.toUpperCase();
+                        $.ajax
+                            ({
+                                //type:Göndereceimiz metodu belirler
+                                type: "POST",
+                                //url :veri istenilen dosyanın adresi
+                                data: JSON.stringify(myText),
+                                contentType: 'application/json',
+                                url: 'https://lightledapi.herokuapp.com/text/update',
+                                success: function (data) {
+                                    console.log(JSON.stringify(data))
+                                }
+                            })
                     }
-                    await sleep(500);
+                    await sleep(750);
                 }
                 newText = "";
                 textToChange = "";
