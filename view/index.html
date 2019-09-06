@@ -333,16 +333,24 @@
             $('.myButtonRandom').click(function () {
                 var x = Math.floor(Math.random() * 4);
                 if (x == 0) {
-                    $(".onoffswitchbred-checkbox").click();
+                    myData.red = !myData.red;
+                    middleLed("red", myData.red);
+                    ledButtons("red", myData.red);
                 }
                 else if (x == 1) {
-                    $(".onoffswitchyellow-checkbox").click();
+                    myData.green = !myData.green;
+                    middleLed("green", myData.green);
+                    ledButtons("green", myData.green);
                 }
                 else if (x == 2) {
-                    $(".onoffswitchgreen-checkbox").click();
+                    myData.blue = !myData.blue;
+                    middleLed("blue", myData.blue);
+                    ledButtons("blue", myData.blue);
                 }
                 else {
-                    $(".onoffswitchblue-checkbox").click();
+                    myData.yellow = !myData.yellow;
+                    middleLed("yellow", myData.yellow);
+                    ledButtons("yellow", myData.yellow);
                 }
                 if ((myData.red && myData.blue && myData.green && myData.yellow) || (!myData.red && !myData.blue && !myData.green && !myData.yellow)) {
                     middleLed("mock", myData.red);
@@ -357,6 +365,18 @@
                         data: JSON.stringify(myText),
                         contentType: 'application/json',
                         url: 'https://lightledapi.herokuapp.com/text/update',
+                        success: function (data) {
+                            console.log(JSON.stringify(data))
+                        }
+                    })
+                    $.ajax
+                    ({
+                        //type:Göndereceimiz metodu belirler
+                        type: "POST",
+                        //url :veri istenilen dosyanın adresi
+                        data: JSON.stringify(myData),
+                        contentType: 'application/json',
+                        url: 'https://lightledapi.herokuapp.com/led/update',
                         success: function (data) {
                             console.log(JSON.stringify(data))
                         }
