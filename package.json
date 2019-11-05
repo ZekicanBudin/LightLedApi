@@ -17,7 +17,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "http": "0.0.0",
-    "mongoose": "^5.6.10",
+    "mongoose": "^5.7.5",
     "serialport": "^7.1.5",
     "xmlhttprequest": "^1.8.0"
   },
